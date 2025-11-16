@@ -51,3 +51,6 @@
 - [x] Update logo in navigation
 - [x] Optimize logo for web display
 - [x] Update APP_LOGO constant
+
+## Logo Size Adjustment
+- [x] Increase logo size in navigation for better visibility

@@ -76,7 +76,7 @@ export default function Home() {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <img src={APP_LOGO} alt="Scarlet Hotel" className="h-12 md:h-16" />
+          <img src={APP_LOGO} alt="Scarlet Hotel" className="h-16 md:h-20" />
           <div className="hidden md:flex gap-8 text-sm">
             <a href="#about" className="hover:text-primary transition-colors">
               {t("אודות", "About")}
