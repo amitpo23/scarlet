@@ -141,3 +141,11 @@
 ## Instagram Link Update
 - [x] Update Instagram username to scarlet_hoteltlv
 - [x] Update all Instagram links to correct profile
+
+## AI Chatbot
+- [x] Create chatbot widget component
+- [x] Implement FAQ-based response system
+- [x] Add bilingual support for chatbot
+- [x] Design chat interface with message bubbles
+- [x] Add floating chatbot button
+- [x] Integrate chatbot into website

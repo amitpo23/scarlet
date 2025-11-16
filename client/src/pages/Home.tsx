@@ -13,6 +13,7 @@ import { FAQ } from "@/components/FAQ";
 import { WhatsAppWidget } from "@/components/WhatsAppWidget";
 import { SpecialOffers } from "@/components/SpecialOffers";
 import { InstagramFeed } from "@/components/InstagramFeed";
+import { AIChatbot } from "@/components/AIChatbot";
 
 export default function Home() {
   const [activeImage, setActiveImage] = useState(0);
@@ -430,6 +431,7 @@ export default function Home() {
       {/* Booking Modal */}
       <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
       <WhatsAppWidget />
+      <AIChatbot />
     </div>
   );
 }
