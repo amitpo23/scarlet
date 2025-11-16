@@ -70,4 +70,4 @@
 - [x] Create weather display component
 - [x] Add weather widget to homepage
 - [x] Show current temperature and conditions
-- [ ] Add weather forecast (optional)
+- [x] Add 5-day weather forecast for trip planning
