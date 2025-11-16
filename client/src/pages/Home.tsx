@@ -7,6 +7,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { BookingModal } from "@/components/BookingModal";
 import { WeatherWidget } from "@/components/WeatherWidget";
 import { AttractionsMap } from "@/components/AttractionsMap";
+import { PhotoGallery } from "@/components/PhotoGallery";
 
 export default function Home() {
   const [activeImage, setActiveImage] = useState(0);
@@ -284,30 +285,15 @@ export default function Home() {
       </section>
 
       {/* Gallery Section */}
-      <section className="py-24 bg-secondary/30">
+      <section id="gallery" className="py-24 bg-secondary/20">
         <div className="container mx-auto px-6">
           <h2 className="text-5xl font-bold mb-4 text-center text-foreground">
             {t("גלריה", "Gallery")}
           </h2>
           <p className="text-center text-muted-foreground mb-16 text-lg">
-            {t("הצצה למלון שלנו", "A glimpse into our hotel")}
+            {t("גלה את המלון שלנו בתמונות מקצועיות", "Explore our hotel through professional photography")}
           </p>
-          <div className="grid md:grid-cols-3 gap-4">
-            {galleryImages.map((img, idx) => (
-              <div 
-                key={idx} 
-                className="relative h-64 overflow-hidden rounded-lg cursor-pointer group"
-                onClick={() => setActiveImage(idx)}
-              >
-                <img 
-                  src={img} 
-                  alt={`Gallery ${idx + 1}`} 
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors"></div>
-              </div>
-            ))}
-          </div>
+          <PhotoGallery />
         </div>
       </section>
 
