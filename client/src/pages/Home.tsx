@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Phone, Mail, Wifi, Coffee, Car, Wind, Shield, Users, Languages } from "lucide-react";
+import { APP_LOGO } from "@/const";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -75,7 +76,7 @@ export default function Home() {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-primary">Scarlet Hotel</h1>
+          <img src={APP_LOGO} alt="Scarlet Hotel" className="h-12 md:h-16" />
           <div className="hidden md:flex gap-8 text-sm">
             <a href="#about" className="hover:text-primary transition-colors">
               {t("אודות", "About")}
