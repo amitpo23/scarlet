@@ -71,3 +71,10 @@
 - [x] Add weather widget to homepage
 - [x] Show current temperature and conditions
 - [x] Add 5-day weather forecast for trip planning
+
+## Nearby Attractions Map
+- [x] Create interactive Google Maps component
+- [x] Add markers for recommended attractions
+- [x] Add attraction details (name, description, distance)
+- [x] Integrate map into location section
+- [x] Add bilingual attraction information

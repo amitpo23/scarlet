@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { BookingModal } from "@/components/BookingModal";
 import { WeatherWidget } from "@/components/WeatherWidget";
+import { AttractionsMap } from "@/components/AttractionsMap";
 
 export default function Home() {
   const [activeImage, setActiveImage] = useState(0);
@@ -314,49 +315,25 @@ export default function Home() {
       <section id="location" className="py-24 bg-white">
         <div className="container mx-auto px-6">
           <h2 className="text-5xl font-bold mb-4 text-center text-foreground">
-            {t("מיקום", "Location")}
+            {t("מיקום ואטרקציות", "Location & Attractions")}
           </h2>
           <p className="text-center text-muted-foreground mb-16 text-lg">
-            {t("במרכז תל אביב", "In the heart of Tel Aviv")}
+            {t("גלה את המקומות המעניינים ביותר באזור", "Discover the most interesting places in the area")}
           </p>
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            <div>
-              <div className="flex items-start gap-4 mb-6">
-                <MapPin className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
-                <div>
-                  <h3 className="font-bold text-xl mb-2">
-                    {t("כתובת", "Address")}
-                  </h3>
-                  <p className="text-muted-foreground">17 J. L. Gordon Street</p>
-                  <p className="text-muted-foreground">
-                    {t("תל אביב, 6343801", "Tel Aviv, 6343801")}
-                  </p>
-                  <p className="text-muted-foreground">
-                    {t("ישראל", "Israel")}
-                  </p>
-                </div>
+          
+          {/* Hotel Address */}
+          <div className="mb-12 text-center">
+            <div className="inline-flex items-center gap-3 bg-secondary/30 px-6 py-4 rounded-lg">
+              <MapPin className="w-6 h-6 text-primary" />
+              <div className={language === "he" ? "text-right" : "text-left"}>
+                <h3 className="font-bold text-lg">{t("מלון Scarlet", "Scarlet Hotel")}</h3>
+                <p className="text-muted-foreground">17 J. L. Gordon Street, {t("תל אביב", "Tel Aviv")}</p>
               </div>
-              <div className="space-y-4 text-muted-foreground">
-                <h3 className="font-bold text-xl text-foreground mb-4">
-                  {t("אטרקציות קרובות", "Nearby Attractions")}
-                </h3>
-                <p>• {t("חוף גורדון - 5 דקות הליכה", "Gordon Beach - 5 min walk")}</p>
-                <p>• {t("כיכר דיזנגוף - 10 דקות הליכה", "Dizengoff Square - 10 min walk")}</p>
-                <p>• {t("דיזנגוף סנטר - 15 דקות הליכה", "Dizengoff Center - 15 min walk")}</p>
-                <p>• {t("נמל התעופה בן גוריון - 14 ק\"מ", "Ben Gurion Airport - 14 km")}</p>
-              </div>
-            </div>
-            <div className="h-96 bg-muted rounded-lg overflow-hidden">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3380.6891234567!2d34.7749!3d32.0809!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDA0JzUxLjIiTiAzNMKwNDYnMjkuNiJF!5e0!3m2!1sen!2sil!4v1234567890"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-              />
             </div>
           </div>
+
+          {/* Interactive Attractions Map */}
+          <AttractionsMap />
         </div>
       </section>
 
