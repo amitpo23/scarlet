@@ -57,7 +57,7 @@ export function InstagramFeed() {
       <div className="text-center">
         <div className="flex items-center justify-center gap-3 mb-4">
           <Instagram className="w-8 h-8 text-primary" />
-          <h3 className="text-2xl font-bold">@scarlethotel_tlv</h3>
+          <h3 className="text-2xl font-bold">@scarlet_hoteltlv</h3>
         </div>
         <p className="text-muted-foreground mb-6">
           {t("עקבו אחרינו באינסטגרם לעדכונים ותמונות מהמלון", "Follow us on Instagram for updates and hotel photos")}
@@ -65,7 +65,7 @@ export function InstagramFeed() {
         <div className="flex flex-wrap justify-center gap-4">
           <Button asChild variant="default" size="lg">
             <a 
-              href="https://instagram.com/scarlethotel_tlv" 
+              href="https://www.instagram.com/scarlet_hoteltlv/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2"
@@ -104,7 +104,7 @@ export function InstagramFeed() {
         {posts.map((post) => (
           <a
             key={post.id}
-            href="https://instagram.com/scarlethotel_tlv"
+            href="https://www.instagram.com/scarlet_hoteltlv/"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative aspect-square overflow-hidden rounded-lg bg-secondary/20"

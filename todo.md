@@ -137,3 +137,7 @@
 - [x] Add Facebook link button to Instagram section
 - [x] Add Twitter link button to Instagram section
 - [x] Style social media buttons consistently
+
+## Instagram Link Update
+- [x] Update Instagram username to scarlet_hoteltlv
+- [x] Update all Instagram links to correct profile
