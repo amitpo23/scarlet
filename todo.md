@@ -64,3 +64,10 @@
 - [x] Add booking form with contact details
 - [x] Integrate booking button throughout the site
 - [x] Add booking confirmation page/modal
+
+## Weather Widget
+- [x] Integrate weather API for Tel Aviv
+- [x] Create weather display component
+- [x] Add weather widget to homepage
+- [x] Show current temperature and conditions
+- [ ] Add weather forecast (optional)

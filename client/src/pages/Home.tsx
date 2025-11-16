@@ -5,6 +5,7 @@ import { APP_LOGO } from "@/const";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { BookingModal } from "@/components/BookingModal";
+import { WeatherWidget } from "@/components/WeatherWidget";
 
 export default function Home() {
   const [activeImage, setActiveImage] = useState(0);
@@ -135,6 +136,10 @@ export default function Home() {
           <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6" onClick={() => openBooking()}>
             {t("הזמן עכשיו", "Book Now")}
           </Button>
+        </div>
+        {/* Weather Widget */}
+        <div className="absolute top-24 right-8 z-20 hidden md:block">
+          <WeatherWidget />
         </div>
         {/* Image indicators */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
