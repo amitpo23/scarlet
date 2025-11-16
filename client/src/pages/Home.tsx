@@ -12,6 +12,7 @@ import { GuestReviews } from "@/components/GuestReviews";
 import { FAQ } from "@/components/FAQ";
 import { WhatsAppWidget } from "@/components/WhatsAppWidget";
 import { SpecialOffers } from "@/components/SpecialOffers";
+import { InstagramFeed } from "@/components/InstagramFeed";
 
 export default function Home() {
   const [activeImage, setActiveImage] = useState(0);
@@ -89,10 +90,10 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm shadow-md border-b border-border" role="navigation" aria-label={t("ניווט ראשי", "Main navigation")}>
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <img src={APP_LOGO} alt="Scarlet Hotel" className="h-16 md:h-20" />
-          <div className="hidden md:flex gap-8 text-sm">
+          <img src={APP_LOGO} alt={t("לוגו מלון Scarlet", "Scarlet Hotel Logo")} className="h-16 md:h-20" />
+          <div className="hidden md:flex gap-8 text-sm" role="menubar">
              <a href="#about" className="hover:text-primary transition-colors">{t("אודות", "About")}</a>
             <a href="#rooms" className="hover:text-primary transition-colors">{t("חדרים", "Rooms")}</a>
             <a href="#offers" className="hover:text-primary transition-colors">{t("הצעות", "Offers")}</a>
@@ -103,7 +104,7 @@ export default function Home() {
             <a href="#location" className="hover:text-primary transition-colors">{t("מיקום", "Location")}</a>
             <a href="#contact" className="hover:text-primary transition-colors">{t("צור קשר", "Contact")}</a>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4" role="toolbar" aria-label={t("כפתורי פעולה", "Action buttons")}>
             <Button
               variant="outline"
               size="sm"
@@ -321,6 +322,19 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Instagram Feed Section */}
+      <section id="instagram" className="py-24 bg-gradient-to-br from-pink-50 to-purple-50 dark:from-pink-950/20 dark:to-purple-950/20">
+        <div className="container mx-auto px-6">
+          <h2 className="text-5xl font-bold mb-4 text-center text-foreground">
+            {t("האינסטגרם שלנו", "Our Instagram")}
+          </h2>
+          <p className="text-center text-muted-foreground mb-16 text-lg">
+            {t("הצטרפו לקהילה שלנו וראו מה קורה במלון", "Join our community and see what's happening at the hotel")}
+          </p>
+          <InstagramFeed />
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section id="faq" className="py-24 bg-secondary/20">
         <div className="container mx-auto px-6">
@@ -392,8 +406,23 @@ export default function Home() {
           <p className="text-sm opacity-80 mb-4">
             {t("מלון בוטיק יוקרתי בלב תל אביב", "A luxury boutique hotel in the heart of Tel Aviv")}
           </p>
-          <div className="mt-8 text-xs opacity-60">
-            © 2025 Scarlet Hotel. All rights reserved.
+          <div className="mt-8 space-y-4">
+            <div className="flex justify-center gap-6 text-sm">
+              <a href="/accessibility" className="hover:text-primary transition-colors opacity-80 hover:opacity-100">
+                {t("הצהרת נגישות", "Accessibility")}
+              </a>
+              <span className="opacity-60">|</span>
+              <a href="/privacy" className="hover:text-primary transition-colors opacity-80 hover:opacity-100">
+                {t("מדיניות פרטיות", "Privacy Policy")}
+              </a>
+              <span className="opacity-60">|</span>
+              <a href="/terms" className="hover:text-primary transition-colors opacity-80 hover:opacity-100">
+                {t("תנאי שימוש", "Terms of Service")}
+              </a>
+            </div>
+            <div className="text-xs opacity-60">
+              © 2025 Scarlet Hotel. All rights reserved.
+            </div>
           </div>
         </div>
       </footer>

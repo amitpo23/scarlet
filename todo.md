@@ -115,3 +115,20 @@
 - [x] Include discount badges and pricing
 - [x] Add bilingual offer descriptions
 - [x] Integrate offers section into homepage
+
+## Instagram Feed Widget
+- [x] Create Instagram feed component
+- [x] Add mock Instagram posts with hotel photos
+- [x] Include social media links
+- [x] Add follow button and engagement CTAs
+- [x] Integrate Instagram section into homepage
+
+## Legal Compliance & Accessibility
+- [x] Create accessibility statement page (Hebrew & English)
+- [x] Implement WCAG 2.1 accessibility improvements
+- [x] Create privacy policy page compliant with Israeli law
+- [x] Create terms of service page
+- [ ] Add cookie consent notice
+- [x] Add legal pages to footer
+- [x] Test keyboard navigation
+- [x] Add ARIA labels and semantic HTML
