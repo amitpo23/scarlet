@@ -78,3 +78,7 @@
 - [x] Add attraction details (name, description, distance)
 - [x] Integrate map into location section
 - [x] Add bilingual attraction information
+
+## Weather Widget Position Fix
+- [x] Reposition weather widget to more prominent location
+- [x] Ensure widget is visible and not hidden in corner

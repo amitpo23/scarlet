@@ -91,10 +91,10 @@ export function WeatherWidget() {
   if (!weather) return null;
 
   return (
-    <div className="relative">
+    <div className="relative inline-block">
       {/* Current Weather - Always Visible */}
       <div 
-        className="flex items-center gap-3 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm cursor-pointer hover:bg-white transition-colors"
+        className="flex items-center gap-3 bg-white/95 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg cursor-pointer hover:bg-white transition-all hover:shadow-xl"
         onClick={() => setShowForecast(!showForecast)}
       >
         {getWeatherIcon(weather.weatherCode)}
@@ -111,7 +111,7 @@ export function WeatherWidget() {
 
       {/* 5-Day Forecast - Expandable */}
       {showForecast && (
-        <Card className="absolute top-full mt-2 right-0 w-80 shadow-xl z-50">
+        <Card className="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 w-80 shadow-xl z-50">
           <CardHeader className="pb-3">
             <CardTitle className="text-lg flex items-center gap-2">
               <Calendar className="w-5 h-5" />

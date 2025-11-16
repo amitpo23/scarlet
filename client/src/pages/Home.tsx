@@ -137,10 +137,10 @@ export default function Home() {
           <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6" onClick={() => openBooking()}>
             {t("הזמן עכשיו", "Book Now")}
           </Button>
-        </div>
-        {/* Weather Widget */}
-        <div className="absolute top-24 right-8 z-20 hidden md:block">
-          <WeatherWidget />
+          {/* Weather Widget */}
+          <div className="mt-8">
+            <WeatherWidget />
+          </div>
         </div>
         {/* Image indicators */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
