@@ -8,6 +8,7 @@ import { BookingModal } from "@/components/BookingModal";
 import { WeatherWidget } from "@/components/WeatherWidget";
 import { AttractionsMap } from "@/components/AttractionsMap";
 import { PhotoGallery } from "@/components/PhotoGallery";
+import { GuestReviews } from "@/components/GuestReviews";
 
 export default function Home() {
   const [activeImage, setActiveImage] = useState(0);
@@ -89,21 +90,13 @@ export default function Home() {
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <img src={APP_LOGO} alt="Scarlet Hotel" className="h-16 md:h-20" />
           <div className="hidden md:flex gap-8 text-sm">
-            <a href="#about" className="hover:text-primary transition-colors">
-              {t("אודות", "About")}
-            </a>
-            <a href="#rooms" className="hover:text-primary transition-colors">
-              {t("חדרים", "Rooms")}
-            </a>
-            <a href="#amenities" className="hover:text-primary transition-colors">
-              {t("שירותים", "Amenities")}
-            </a>
-            <a href="#location" className="hover:text-primary transition-colors">
-              {t("מיקום", "Location")}
-            </a>
-            <a href="#contact" className="hover:text-primary transition-colors">
-              {t("צור קשר", "Contact")}
-            </a>
+             <a href="#about" className="hover:text-primary transition-colors">{t("אודות", "About")}</a>
+            <a href="#rooms" className="hover:text-primary transition-colors">{t("חדרים", "Rooms")}</a>
+            <a href="#amenities" className="hover:text-primary transition-colors">{t("שירותים", "Amenities")}</a>
+            <a href="#reviews" className="hover:text-primary transition-colors">{t("חוות דעת", "Reviews")}</a>
+            <a href="#gallery" className="hover:text-primary transition-colors">{t("גלריה", "Gallery")}</a>
+            <a href="#location" className="hover:text-primary transition-colors">{t("מיקום", "Location")}</a>
+            <a href="#contact" className="hover:text-primary transition-colors">{t("צור קשר", "Contact")}</a>
           </div>
           <div className="flex items-center gap-4">
             <Button
@@ -281,6 +274,19 @@ export default function Home() {
               </ul>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Guest Reviews Section */}
+      <section id="reviews" className="py-24 bg-white">
+        <div className="container mx-auto px-6">
+          <h2 className="text-5xl font-bold mb-4 text-center text-foreground">
+            {t("חוות דעת אורחים", "Guest Reviews")}
+          </h2>
+          <p className="text-center text-muted-foreground mb-16 text-lg">
+            {t("מה האורחים שלנו אומרים עלינו", "What our guests say about us")}
+          </p>
+          <GuestReviews />
         </div>
       </section>
 

@@ -89,3 +89,10 @@
 - [x] Organize images by category (rooms, lobby, views, amenities)
 - [x] Add image zoom and navigation features
 - [x] Integrate gallery into website
+
+## Guest Reviews Section
+- [x] Create reviews component with star ratings
+- [x] Add authentic guest testimonials
+- [x] Include reviewer names and booking platforms
+- [x] Add overall rating display
+- [x] Integrate reviews section into homepage
