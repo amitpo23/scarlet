@@ -1,5 +1,5 @@
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Instagram, Heart, MessageCircle } from "lucide-react";
+import { Instagram, Heart, MessageCircle, Facebook, Twitter } from "lucide-react";
 import { Button } from "./ui/button";
 
 export function InstagramFeed() {
@@ -62,17 +62,41 @@ export function InstagramFeed() {
         <p className="text-muted-foreground mb-6">
           {t("עקבו אחרינו באינסטגרם לעדכונים ותמונות מהמלון", "Follow us on Instagram for updates and hotel photos")}
         </p>
-        <Button asChild variant="default" size="lg">
-          <a 
-            href="https://instagram.com/scarlethotel_tlv" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2"
-          >
-            <Instagram className="w-5 h-5" />
-            {t("עקבו אחרינו", "Follow Us")}
-          </a>
-        </Button>
+        <div className="flex flex-wrap justify-center gap-4">
+          <Button asChild variant="default" size="lg">
+            <a 
+              href="https://instagram.com/scarlethotel_tlv" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2"
+            >
+              <Instagram className="w-5 h-5" />
+              Instagram
+            </a>
+          </Button>
+          <Button asChild variant="default" size="lg" className="bg-blue-600 hover:bg-blue-700">
+            <a 
+              href="https://facebook.com/scarlethoteltelaviv" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2"
+            >
+              <Facebook className="w-5 h-5" />
+              Facebook
+            </a>
+          </Button>
+          <Button asChild variant="default" size="lg" className="bg-sky-500 hover:bg-sky-600">
+            <a 
+              href="https://twitter.com/scarlethotel_tlv" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2"
+            >
+              <Twitter className="w-5 h-5" />
+              Twitter
+            </a>
+          </Button>
+        </div>
       </div>
 
       {/* Instagram Grid */}

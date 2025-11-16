@@ -132,3 +132,8 @@
 - [x] Add legal pages to footer
 - [x] Test keyboard navigation
 - [x] Add ARIA labels and semantic HTML
+
+## Social Media Enhancement
+- [x] Add Facebook link button to Instagram section
+- [x] Add Twitter link button to Instagram section
+- [x] Style social media buttons consistently
