@@ -11,6 +11,7 @@ import { PhotoGallery } from "@/components/PhotoGallery";
 import { GuestReviews } from "@/components/GuestReviews";
 import { FAQ } from "@/components/FAQ";
 import { WhatsAppWidget } from "@/components/WhatsAppWidget";
+import { SpecialOffers } from "@/components/SpecialOffers";
 
 export default function Home() {
   const [activeImage, setActiveImage] = useState(0);
@@ -94,6 +95,7 @@ export default function Home() {
           <div className="hidden md:flex gap-8 text-sm">
              <a href="#about" className="hover:text-primary transition-colors">{t("אודות", "About")}</a>
             <a href="#rooms" className="hover:text-primary transition-colors">{t("חדרים", "Rooms")}</a>
+            <a href="#offers" className="hover:text-primary transition-colors">{t("הצעות", "Offers")}</a>
             <a href="#amenities" className="hover:text-primary transition-colors">{t("שירותים", "Amenities")}</a>
             <a href="#reviews" className="hover:text-primary transition-colors">{t("חוות דעת", "Reviews")}</a>
             <a href="#gallery" className="hover:text-primary transition-colors">{t("גלריה", "Gallery")}</a>
@@ -238,8 +240,21 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Special Offers Section */}
+      <section id="offers" className="py-24 bg-gradient-to-br from-primary/5 to-secondary/10">
+        <div className="container mx-auto px-6">
+          <h2 className="text-5xl font-bold mb-4 text-center text-foreground">
+            {t("הצעות מיוחדות", "Special Offers")}
+          </h2>
+          <p className="text-center text-muted-foreground mb-16 text-lg">
+            {t("חסכו עם המבצעים והחבילות המיוחדות שלנו", "Save with our special deals and packages")}
+          </p>
+          <SpecialOffers />
+        </div>
+      </section>
+
       {/* Amenities Section */}
-      <section id="amenities" className="py-24 bg-white">
+      <section id="amenities" className="py-24 bg-secondary/20">
         <div className="container mx-auto px-6">
           <h2 className="text-5xl font-bold mb-4 text-center text-foreground">
             {t("שירותים ומתקנים", "Amenities & Facilities")}

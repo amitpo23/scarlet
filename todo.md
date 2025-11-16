@@ -108,3 +108,10 @@
 - [x] Add WhatsApp contact integration
 - [x] Include bilingual welcome message
 - [x] Add to website with proper positioning
+
+## Special Offers Section
+- [x] Create special offers component with deal cards
+- [x] Add seasonal packages and holiday deals
+- [x] Include discount badges and pricing
+- [x] Add bilingual offer descriptions
+- [x] Integrate offers section into homepage
