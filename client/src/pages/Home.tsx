@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { MapPin, Phone, Mail, Wifi, Coffee, Car, Wind, Shield, Users } from "lucide-react";
+import { MapPin, Phone, Mail, Wifi, Coffee, Car, Wind, Shield, Users, Languages } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Home() {
   const [activeImage, setActiveImage] = useState(0);
+  const { language, setLanguage, t } = useLanguage();
 
   const galleryImages = [
     "/images/005.webp", // Red luxury room
@@ -26,38 +28,46 @@ export default function Home() {
 
   const rooms = [
     {
-      name: "חדר אקונומי זוגי",
-      nameEn: "Economy Double Room",
+      name: t("חדר אקונומי זוגי", "Economy Double Room"),
       image: "/images/004.webp",
-      description: "חדר נעים ומעוצב בקפידה עם כל השירותים הדרושים לשהייה נוחה",
+      description: t(
+        "חדר נעים ומעוצב בקפידה עם כל השירותים הדרושים לשהייה נוחה",
+        "A pleasant and carefully designed room with all the amenities needed for a comfortable stay"
+      ),
     },
     {
-      name: "חדר קלאסיק זוגי",
-      nameEn: "Classic Double Room",
+      name: t("חדר קלאסיק זוגי", "Classic Double Room"),
       image: "/images/003.webp",
-      description: "חדר מרווח עם עיצוב ייחודי ואווירה חמימה",
+      description: t(
+        "חדר מרווח עם עיצוב ייחודי ואווירה חמימה",
+        "A spacious room with unique design and warm atmosphere"
+      ),
     },
     {
-      name: "חדר קלאסיק זוגי עם מרפסת",
-      nameEn: "Classic Double Room with Balcony",
+      name: t("חדר קלאסיק זוגי עם מרפסת", "Classic Double Room with Balcony"),
       image: "/images/004.webp",
-      description: "חדר קלאסי עם מרפסת פרטית ונוף לעיר",
+      description: t(
+        "חדר קלאסי עם מרפסת פרטית ונוף לעיר",
+        "A classic room with private balcony and city views"
+      ),
     },
     {
-      name: "חדר דלוקס",
-      nameEn: "Deluxe Room",
+      name: t("חדר דלוקס", "Deluxe Room"),
       image: "/images/005.webp",
-      description: "חדר יוקרתי עם עיצוב נועז ומרשים בגוונים אדומים",
+      description: t(
+        "חדר יוקרתי עם עיצוב נועז ומרשים בגוונים אדומים",
+        "A luxury room with bold and impressive design in red tones"
+      ),
     },
   ];
 
   const amenities = [
-    { icon: Wifi, text: "Wi-Fi חינם", textEn: "Free Wi-Fi" },
-    { icon: Wind, text: "מיזוג אוויר", textEn: "Air Conditioning" },
-    { icon: Coffee, text: "בר ומסעדה", textEn: "Bar & Restaurant" },
-    { icon: Car, text: "חניה", textEn: "Parking" },
-    { icon: Shield, text: "כספת בחדר", textEn: "In-room Safe" },
-    { icon: Users, text: "שירות קונסיירז'", textEn: "Concierge Service" },
+    { icon: Wifi, text: t("Wi-Fi חינם", "Free Wi-Fi") },
+    { icon: Wind, text: t("מיזוג אוויר", "Air Conditioning") },
+    { icon: Coffee, text: t("בר ומסעדה", "Bar & Restaurant") },
+    { icon: Car, text: t("חניה", "Parking") },
+    { icon: Shield, text: t("כספת בחדר", "In-room Safe") },
+    { icon: Users, text: t("שירות קונסיירז'", "Concierge Service") },
   ];
 
   return (
@@ -67,13 +77,36 @@ export default function Home() {
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <h1 className="text-3xl font-bold text-primary">Scarlet Hotel</h1>
           <div className="hidden md:flex gap-8 text-sm">
-            <a href="#about" className="hover:text-primary transition-colors">אודות</a>
-            <a href="#rooms" className="hover:text-primary transition-colors">חדרים</a>
-            <a href="#amenities" className="hover:text-primary transition-colors">שירותים</a>
-            <a href="#location" className="hover:text-primary transition-colors">מיקום</a>
-            <a href="#contact" className="hover:text-primary transition-colors">צור קשר</a>
+            <a href="#about" className="hover:text-primary transition-colors">
+              {t("אודות", "About")}
+            </a>
+            <a href="#rooms" className="hover:text-primary transition-colors">
+              {t("חדרים", "Rooms")}
+            </a>
+            <a href="#amenities" className="hover:text-primary transition-colors">
+              {t("שירותים", "Amenities")}
+            </a>
+            <a href="#location" className="hover:text-primary transition-colors">
+              {t("מיקום", "Location")}
+            </a>
+            <a href="#contact" className="hover:text-primary transition-colors">
+              {t("צור קשר", "Contact")}
+            </a>
           </div>
-          <Button className="bg-primary hover:bg-primary/90">הזמן עכשיו</Button>
+          <div className="flex items-center gap-4">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setLanguage(language === "he" ? "en" : "he")}
+              className="flex items-center gap-2"
+            >
+              <Languages className="w-4 h-4" />
+              {language === "he" ? "EN" : "עב"}
+            </Button>
+            <Button className="bg-primary hover:bg-primary/90">
+              {t("הזמן עכשיו", "Book Now")}
+            </Button>
+          </div>
         </div>
       </nav>
 
@@ -88,13 +121,10 @@ export default function Home() {
         <div className="relative z-10 text-center text-white px-4">
           <h2 className="text-6xl md:text-8xl font-bold mb-6 animate-fade-in">Scarlet Hotel</h2>
           <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
-            חוויה בוטיקית ייחודית בלב תל אביב
-          </p>
-          <p className="text-lg md:text-xl mb-12 max-w-2xl mx-auto opacity-90">
-            A unique boutique experience in the heart of Tel Aviv
+            {t("חוויה בוטיקית ייחודית בלב תל אביב", "A unique boutique experience in the heart of Tel Aviv")}
           </p>
           <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6">
-            גלה עוד
+            {t("גלה עוד", "Discover More")}
           </Button>
         </div>
         {/* Image indicators */}
@@ -116,26 +146,35 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-5xl font-bold mb-6 text-foreground">אודות המלון</h2>
+              <h2 className="text-5xl font-bold mb-6 text-foreground">
+                {t("אודות המלון", "About the Hotel")}
+              </h2>
               <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  מלון Scarlet ממוקם במרכז תל אביב התוסס, ומציע חוויית אירוח בוטיקית ייחודית המשלבת עיצוב נועז עם נוחות מודרנית. המלון כולל גינה, טרסה ובר, ומעניק לאורחים חוויה בלתי נשכחת.
+                  {t(
+                    "מלון Scarlet ממוקם במרכז תל אביב התוסס, ומציע חוויית אירוח בוטיקית ייחודית המשלבת עיצוב נועז עם נוחות מודרנית. המלון כולל גינה, טרסה ובר, ומעניק לאורחים חוויה בלתי נשכחת.",
+                    "The Scarlet Hotel is located in vibrant central Tel Aviv, offering a unique boutique hospitality experience that combines bold design with modern comfort. The hotel features a garden, terrace and bar, providing guests with an unforgettable experience."
+                  )}
                 </p>
                 <p>
-                  כל חדר במלון מעוצב בקפידה עם תשומת לב לפרטים הקטנים, ומציע מרפסת פרטית עם נוף לעיר. אנו מספקים שירותי קונסיירז' מקצועיים, אחסון מזוודות ואינטרנט אלחוטי חינם בכל רחבי המלון.
-                </p>
-                <p className="text-base italic">
-                  The Scarlet Hotel is located in vibrant central Tel Aviv, offering a unique boutique hospitality experience that combines bold design with modern comfort. The hotel features a garden, terrace and bar, providing guests with an unforgettable experience.
+                  {t(
+                    "כל חדר במלון מעוצב בקפידה עם תשומת לב לפרטים הקטנים, ומציע מרפסת פרטית עם נוף לעיר. אנו מספקים שירותי קונסיירז' מקצועיים, אחסון מזוודות ואינטרנט אלחוטי חינם בכל רחבי המלון.",
+                    "Each room in the hotel is carefully designed with attention to detail, offering a private balcony with city views. We provide professional concierge services, luggage storage and free Wi-Fi throughout the hotel."
+                  )}
                 </p>
               </div>
               <div className="mt-8 flex gap-4">
                 <div className="text-center">
                   <div className="text-4xl font-bold text-primary">8.9</div>
-                  <div className="text-sm text-muted-foreground">דירוג מצוין</div>
+                  <div className="text-sm text-muted-foreground">
+                    {t("דירוג מצוין", "Excellent Rating")}
+                  </div>
                 </div>
                 <div className="text-center">
                   <div className="text-4xl font-bold text-primary">9.4</div>
-                  <div className="text-sm text-muted-foreground">מיקום מעולה</div>
+                  <div className="text-sm text-muted-foreground">
+                    {t("מיקום מעולה", "Perfect Location")}
+                  </div>
                 </div>
               </div>
             </div>
@@ -158,8 +197,12 @@ export default function Home() {
       {/* Rooms Section */}
       <section id="rooms" className="py-24 bg-secondary/30">
         <div className="container mx-auto px-6">
-          <h2 className="text-5xl font-bold mb-4 text-center text-foreground">החדרים שלנו</h2>
-          <p className="text-center text-muted-foreground mb-16 text-lg">Our Rooms</p>
+          <h2 className="text-5xl font-bold mb-4 text-center text-foreground">
+            {t("החדרים שלנו", "Our Rooms")}
+          </h2>
+          <p className="text-center text-muted-foreground mb-16 text-lg">
+            {t("בחר את החדר המושלם עבורך", "Choose the perfect room for you")}
+          </p>
           <div className="grid md:grid-cols-2 gap-8">
             {rooms.map((room, idx) => (
               <Card key={idx} className="overflow-hidden hover:shadow-2xl transition-shadow duration-300">
@@ -171,10 +214,11 @@ export default function Home() {
                   />
                 </div>
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-2">{room.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">{room.nameEn}</p>
+                  <h3 className="text-2xl font-bold mb-4">{room.name}</h3>
                   <p className="text-muted-foreground mb-6">{room.description}</p>
-                  <Button className="w-full bg-primary hover:bg-primary/90">הזמן חדר</Button>
+                  <Button className="w-full bg-primary hover:bg-primary/90">
+                    {t("הזמן חדר", "Book Room")}
+                  </Button>
                 </CardContent>
               </Card>
             ))}
@@ -185,35 +229,39 @@ export default function Home() {
       {/* Amenities Section */}
       <section id="amenities" className="py-24 bg-white">
         <div className="container mx-auto px-6">
-          <h2 className="text-5xl font-bold mb-4 text-center text-foreground">שירותים ומתקנים</h2>
-          <p className="text-center text-muted-foreground mb-16 text-lg">Amenities & Facilities</p>
+          <h2 className="text-5xl font-bold mb-4 text-center text-foreground">
+            {t("שירותים ומתקנים", "Amenities & Facilities")}
+          </h2>
+          <p className="text-center text-muted-foreground mb-16 text-lg">
+            {t("כל מה שאתה צריך לשהייה מושלמת", "Everything you need for a perfect stay")}
+          </p>
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {amenities.map((amenity, idx) => {
               const Icon = amenity.icon;
               return (
                 <div key={idx} className="text-center p-6 rounded-lg hover:bg-secondary/20 transition-colors">
                   <Icon className="w-12 h-12 mx-auto mb-4 text-primary" />
-                  <h3 className="font-semibold text-lg mb-1">{amenity.text}</h3>
-                  <p className="text-sm text-muted-foreground">{amenity.textEn}</p>
+                  <h3 className="font-semibold text-lg">{amenity.text}</h3>
                 </div>
               );
             })}
           </div>
           <div className="mt-16 bg-accent text-accent-foreground rounded-lg p-12 text-center">
-            <h3 className="text-3xl font-bold mb-4">כל חדר כולל</h3>
-            <p className="text-lg mb-2">Every room includes</p>
-            <div className="grid md:grid-cols-2 gap-4 mt-8 text-right max-w-2xl mx-auto">
-              <ul className="space-y-2">
-                <li>• ארון בגדים מרווח</li>
-                <li>• קומקום חשמלי</li>
-                <li>• מקרר</li>
-                <li>• כספת אישית</li>
+            <h3 className="text-3xl font-bold mb-4">
+              {t("כל חדר כולל", "Every room includes")}
+            </h3>
+            <div className="grid md:grid-cols-2 gap-4 mt-8 max-w-2xl mx-auto">
+              <ul className={`space-y-2 ${language === "he" ? "text-right" : "text-left"}`}>
+                <li>• {t("ארון בגדים מרווח", "Spacious wardrobe")}</li>
+                <li>• {t("קומקום חשמלי", "Electric kettle")}</li>
+                <li>• {t("מקרר", "Refrigerator")}</li>
+                <li>• {t("כספת אישית", "Personal safe")}</li>
               </ul>
-              <ul className="space-y-2">
-                <li>• טלוויזיה בעלת מסך שטוח</li>
-                <li>• חדר רחצה פרטי עם מקלחת</li>
-                <li>• מייבש שיער</li>
-                <li>• מצעים ומגבות איכוטיים</li>
+              <ul className={`space-y-2 ${language === "he" ? "text-right" : "text-left"}`}>
+                <li>• {t("טלוויזיה בעלת מסך שטוח", "Flat-screen TV")}</li>
+                <li>• {t("חדר רחצה פרטי עם מקלחת", "Private bathroom with shower")}</li>
+                <li>• {t("מייבש שיער", "Hair dryer")}</li>
+                <li>• {t("מצעים ומגבות איכותיים", "Quality linens and towels")}</li>
               </ul>
             </div>
           </div>
@@ -223,8 +271,12 @@ export default function Home() {
       {/* Gallery Section */}
       <section className="py-24 bg-secondary/30">
         <div className="container mx-auto px-6">
-          <h2 className="text-5xl font-bold mb-4 text-center text-foreground">גלריה</h2>
-          <p className="text-center text-muted-foreground mb-16 text-lg">Gallery</p>
+          <h2 className="text-5xl font-bold mb-4 text-center text-foreground">
+            {t("גלריה", "Gallery")}
+          </h2>
+          <p className="text-center text-muted-foreground mb-16 text-lg">
+            {t("הצצה למלון שלנו", "A glimpse into our hotel")}
+          </p>
           <div className="grid md:grid-cols-3 gap-4">
             {galleryImages.map((img, idx) => (
               <div 
@@ -247,25 +299,37 @@ export default function Home() {
       {/* Location Section */}
       <section id="location" className="py-24 bg-white">
         <div className="container mx-auto px-6">
-          <h2 className="text-5xl font-bold mb-4 text-center text-foreground">מיקום</h2>
-          <p className="text-center text-muted-foreground mb-16 text-lg">Location</p>
+          <h2 className="text-5xl font-bold mb-4 text-center text-foreground">
+            {t("מיקום", "Location")}
+          </h2>
+          <p className="text-center text-muted-foreground mb-16 text-lg">
+            {t("במרכז תל אביב", "In the heart of Tel Aviv")}
+          </p>
           <div className="grid md:grid-cols-2 gap-12 items-start">
             <div>
               <div className="flex items-start gap-4 mb-6">
                 <MapPin className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                 <div>
-                  <h3 className="font-bold text-xl mb-2">כתובת</h3>
+                  <h3 className="font-bold text-xl mb-2">
+                    {t("כתובת", "Address")}
+                  </h3>
                   <p className="text-muted-foreground">17 J. L. Gordon Street</p>
-                  <p className="text-muted-foreground">תל אביב, 6343801</p>
-                  <p className="text-muted-foreground">ישראל</p>
+                  <p className="text-muted-foreground">
+                    {t("תל אביב, 6343801", "Tel Aviv, 6343801")}
+                  </p>
+                  <p className="text-muted-foreground">
+                    {t("ישראל", "Israel")}
+                  </p>
                 </div>
               </div>
               <div className="space-y-4 text-muted-foreground">
-                <h3 className="font-bold text-xl text-foreground mb-4">אטרקציות קרובות</h3>
-                <p>• חוף גורדון - 5 דקות הליכה</p>
-                <p>• כיכר דיזנגוף - 10 דקות הליכה</p>
-                <p>• דיזנגוף סנטר - 15 דקות הליכה</p>
-                <p>• נמל התעופה בן גוריון - 14 ק"מ</p>
+                <h3 className="font-bold text-xl text-foreground mb-4">
+                  {t("אטרקציות קרובות", "Nearby Attractions")}
+                </h3>
+                <p>• {t("חוף גורדון - 5 דקות הליכה", "Gordon Beach - 5 min walk")}</p>
+                <p>• {t("כיכר דיזנגוף - 10 דקות הליכה", "Dizengoff Square - 10 min walk")}</p>
+                <p>• {t("דיזנגוף סנטר - 15 דקות הליכה", "Dizengoff Center - 15 min walk")}</p>
+                <p>• {t("נמל התעופה בן גוריון - 14 ק\"מ", "Ben Gurion Airport - 14 km")}</p>
               </div>
             </div>
             <div className="h-96 bg-muted rounded-lg overflow-hidden">
@@ -285,8 +349,12 @@ export default function Home() {
       {/* Contact Section */}
       <section id="contact" className="py-24 bg-primary text-primary-foreground">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-5xl font-bold mb-4">צור קשר</h2>
-          <p className="text-lg mb-12 opacity-90">Contact Us</p>
+          <h2 className="text-5xl font-bold mb-4">
+            {t("צור קשר", "Contact Us")}
+          </h2>
+          <p className="text-lg mb-12 opacity-90">
+            {t("נשמח לעמוד לשירותכם", "We're here to help")}
+          </p>
           <div className="flex flex-col md:flex-row gap-8 justify-center items-center mb-12">
             <div className="flex items-center gap-3">
               <Phone className="w-6 h-6" />
@@ -298,7 +366,7 @@ export default function Home() {
             </div>
           </div>
           <Button size="lg" variant="secondary" className="text-lg px-8 py-6">
-            הזמן עכשיו
+            {t("הזמן עכשיו", "Book Now")}
           </Button>
         </div>
       </section>
@@ -307,8 +375,9 @@ export default function Home() {
       <footer className="bg-accent text-accent-foreground py-12">
         <div className="container mx-auto px-6 text-center">
           <h3 className="text-2xl font-bold mb-4">Scarlet Hotel Tel Aviv</h3>
-          <p className="text-sm opacity-80 mb-4">מלון בוטיק יוקרתי בלב תל אביב</p>
-          <p className="text-sm opacity-80">A luxury boutique hotel in the heart of Tel Aviv</p>
+          <p className="text-sm opacity-80 mb-4">
+            {t("מלון בוטיק יוקרתי בלב תל אביב", "A luxury boutique hotel in the heart of Tel Aviv")}
+          </p>
           <div className="mt-8 text-xs opacity-60">
             © 2025 Scarlet Hotel. All rights reserved.
           </div>

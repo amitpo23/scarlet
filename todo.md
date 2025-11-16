@@ -38,3 +38,10 @@
 - [x] Verify mobile responsiveness
 - [x] Check image loading and optimization
 - [x] Final review and adjustments
+
+## Bilingual Support
+- [x] Create language context for Hebrew/English switching
+- [x] Add language toggle button to navigation
+- [x] Translate all content to English
+- [x] Implement RTL/LTR text direction switching
+- [x] Test language switching functionality
