@@ -54,3 +54,13 @@
 
 ## Logo Size Adjustment
 - [x] Increase logo size in navigation for better visibility
+
+## Booking Engine
+- [x] Create booking modal/dialog component
+- [x] Add date picker for check-in and check-out dates
+- [x] Add guest selection (adults, children)
+- [x] Add room type selection
+- [x] Display pricing calculation
+- [x] Add booking form with contact details
+- [x] Integrate booking button throughout the site
+- [x] Add booking confirmation page/modal

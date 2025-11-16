@@ -4,10 +4,18 @@ import { MapPin, Phone, Mail, Wifi, Coffee, Car, Wind, Shield, Users, Languages 
 import { APP_LOGO } from "@/const";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { BookingModal } from "@/components/BookingModal";
 
 export default function Home() {
   const [activeImage, setActiveImage] = useState(0);
+  const [bookingOpen, setBookingOpen] = useState(false);
+  const [selectedRoom, setSelectedRoom] = useState<string>();
   const { language, setLanguage, t } = useLanguage();
+
+  const openBooking = (roomType?: string) => {
+    setSelectedRoom(roomType);
+    setBookingOpen(true);
+  };
 
   const galleryImages = [
     "/images/005.webp", // Red luxury room
@@ -104,7 +112,7 @@ export default function Home() {
               <Languages className="w-4 h-4" />
               {language === "he" ? "EN" : "עב"}
             </Button>
-            <Button className="bg-primary hover:bg-primary/90">
+            <Button className="bg-primary hover:bg-primary/90" onClick={() => openBooking()}>
               {t("הזמן עכשיו", "Book Now")}
             </Button>
           </div>
@@ -124,8 +132,8 @@ export default function Home() {
           <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
             {t("חוויה בוטיקית ייחודית בלב תל אביב", "A unique boutique experience in the heart of Tel Aviv")}
           </p>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6">
-            {t("גלה עוד", "Discover More")}
+          <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6" onClick={() => openBooking()}>
+            {t("הזמן עכשיו", "Book Now")}
           </Button>
         </div>
         {/* Image indicators */}
@@ -217,7 +225,7 @@ export default function Home() {
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-bold mb-4">{room.name}</h3>
                   <p className="text-muted-foreground mb-6">{room.description}</p>
-                  <Button className="w-full bg-primary hover:bg-primary/90">
+                  <Button className="w-full bg-primary hover:bg-primary/90" onClick={() => openBooking(idx === 0 ? "economy" : idx === 1 ? "classic" : idx === 2 ? "classic_balcony" : "deluxe")}>
                     {t("הזמן חדר", "Book Room")}
                   </Button>
                 </CardContent>
@@ -366,7 +374,7 @@ export default function Home() {
               <span className="text-lg">info@scarlethotel.co.il</span>
             </div>
           </div>
-          <Button size="lg" variant="secondary" className="text-lg px-8 py-6">
+          <Button size="lg" variant="secondary" className="text-lg px-8 py-6" onClick={() => openBooking()}>
             {t("הזמן עכשיו", "Book Now")}
           </Button>
         </div>
@@ -384,6 +392,9 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Booking Modal */}
+      <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} preselectedRoom={selectedRoom} />
     </div>
   );
 }
