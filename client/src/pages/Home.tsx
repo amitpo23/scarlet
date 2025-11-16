@@ -9,6 +9,7 @@ import { WeatherWidget } from "@/components/WeatherWidget";
 import { AttractionsMap } from "@/components/AttractionsMap";
 import { PhotoGallery } from "@/components/PhotoGallery";
 import { GuestReviews } from "@/components/GuestReviews";
+import { FAQ } from "@/components/FAQ";
 
 export default function Home() {
   const [activeImage, setActiveImage] = useState(0);
@@ -95,6 +96,7 @@ export default function Home() {
             <a href="#amenities" className="hover:text-primary transition-colors">{t("שירותים", "Amenities")}</a>
             <a href="#reviews" className="hover:text-primary transition-colors">{t("חוות דעת", "Reviews")}</a>
             <a href="#gallery" className="hover:text-primary transition-colors">{t("גלריה", "Gallery")}</a>
+            <a href="#faq" className="hover:text-primary transition-colors">{t("שאלות", "FAQ")}</a>
             <a href="#location" className="hover:text-primary transition-colors">{t("מיקום", "Location")}</a>
             <a href="#contact" className="hover:text-primary transition-colors">{t("צור קשר", "Contact")}</a>
           </div>
@@ -300,6 +302,19 @@ export default function Home() {
             {t("גלה את המלון שלנו בתמונות מקצועיות", "Explore our hotel through professional photography")}
           </p>
           <PhotoGallery />
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section id="faq" className="py-24 bg-secondary/20">
+        <div className="container mx-auto px-6">
+          <h2 className="text-5xl font-bold mb-4 text-center text-foreground">
+            {t("שאלות נפוצות", "Frequently Asked Questions")}
+          </h2>
+          <p className="text-center text-muted-foreground mb-16 text-lg">
+            {t("מצא תשובות לשאלות הנפוצות ביותר", "Find answers to the most common questions")}
+          </p>
+          <FAQ />
         </div>
       </section>
 

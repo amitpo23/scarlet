@@ -96,3 +96,9 @@
 - [x] Include reviewer names and booking platforms
 - [x] Add overall rating display
 - [x] Integrate reviews section into homepage
+
+## FAQ Section
+- [x] Create FAQ component with accordion/collapsible items
+- [x] Add common hotel questions and answers
+- [x] Include bilingual Q&A content
+- [x] Integrate FAQ section into homepage
