@@ -42,14 +42,14 @@ export default function Offers() {
       </div>
 
       {/* Offers Section */}
-      <section className="py-20">
+      <section className="py-12">
         <div className="container mx-auto px-6">
           <SpecialOffers />
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl font-light mb-4 text-gray-900">
             {t("לא מצאת את מה שחיפשת?", "Didn't find what you were looking for?")}

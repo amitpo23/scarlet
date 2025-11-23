@@ -208,7 +208,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-32 bg-gray-50">
+      <section id="about" className="py-16 bg-gray-50">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-20 items-center">
             <div>
@@ -266,13 +266,13 @@ export default function Home() {
       </section>
 
       {/* Rooms Section */}
-      <section id="rooms" className="py-32 bg-white">
+      <section id="rooms" className="py-16 bg-white">
         <div className="container mx-auto px-6">
           <h2 className="text-5xl font-light mb-4 text-center text-gray-900">
             {t("החדרים שלנו", "Rooms & Suites")}
           </h2>
           <div className="w-16 h-px bg-primary mx-auto mb-4"></div>
-          <p className="text-center text-gray-600 mb-20 text-base font-light">
+          <p className="text-center text-gray-600 mb-12 text-base font-light">
             {t("בחר את החדר המושלם עבורך", "Choose the perfect room for you")}
           </p>
           <div className="grid md:grid-cols-2 gap-12">
@@ -299,13 +299,13 @@ export default function Home() {
       </section>
 
       {/* Guest Reviews Section */}
-      <section id="reviews" className="py-32 bg-gray-50">
+      <section id="reviews" className="py-16 bg-gray-50">
         <div className="container mx-auto px-6">
           <h2 className="text-5xl font-light mb-4 text-center text-gray-900">
             {t("חווות דעת אורחים", "Guest Reviews")}
           </h2>
           <div className="w-16 h-px bg-primary mx-auto mb-4"></div>
-          <p className="text-center text-gray-600 mb-20 text-base font-light">
+          <p className="text-center text-gray-600 mb-12 text-base font-light">
             {t("מה האורחים שלנו אומרים עלינו", "What our guests say about us")}
           </p>
           <GuestReviews />
@@ -313,13 +313,13 @@ export default function Home() {
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery" className="py-32 bg-white">
+      <section id="gallery" className="py-16 bg-white">
         <div className="container mx-auto px-6">
           <h2 className="text-5xl font-light mb-4 text-center text-gray-900">
             {t("גלריה", "Gallery")}
           </h2>
           <div className="w-16 h-px bg-primary mx-auto mb-4"></div>
-          <p className="text-center text-gray-600 mb-20 text-base font-light">
+          <p className="text-center text-gray-600 mb-12 text-base font-light">
             {t("גלה את המלון שלנו בתמונות מקצועיות", "Explore our hotel through professional photography")}
           </p>
           <PhotoGallery />
@@ -327,13 +327,13 @@ export default function Home() {
       </section>
 
       {/* Instagram Feed Section */}
-      <section id="instagram" className="py-32 bg-gray-50">
+      <section id="instagram" className="py-16 bg-gray-50">
         <div className="container mx-auto px-6">
           <h2 className="text-5xl font-light mb-4 text-center text-gray-900">
             {t("האינסטגרם שלנו", "Our Instagram")}
           </h2>
           <div className="w-16 h-px bg-primary mx-auto mb-4"></div>
-          <p className="text-center text-gray-600 mb-20 text-base font-light">
+          <p className="text-center text-gray-600 mb-12 text-base font-light">
             {t("הצטרפו לקהילה שלנו וראו מה קורה במלון", "Join our community and see what's happening at the hotel")}
           </p>
           <InstagramFeed />
@@ -341,13 +341,13 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-32 bg-white">
+      <section id="faq" className="py-16 bg-white">
         <div className="container mx-auto px-6">
           <h2 className="text-5xl font-light mb-4 text-center text-gray-900">
             {t("שאלות נפוצות", "Frequently Asked Questions")}
           </h2>
           <div className="w-16 h-px bg-primary mx-auto mb-4"></div>
-          <p className="text-center text-gray-600 mb-20 text-base font-light">
+          <p className="text-center text-gray-600 mb-12 text-base font-light">
             {t("מצא תשובות לשאלות הנפוצות ביותר", "Find answers to the most common questions")}
           </p>
           <FAQ />
@@ -355,13 +355,13 @@ export default function Home() {
       </section>
 
       {/* Location Section */}
-      <section id="location" className="py-32 bg-gray-50">
+      <section id="location" className="py-16 bg-gray-50">
         <div className="container mx-auto px-6">
           <h2 className="text-5xl font-light mb-4 text-center text-gray-900">
             {t("מיקום ואטרקציות", "Location & Attractions")}
           </h2>
           <div className="w-16 h-px bg-primary mx-auto mb-4"></div>
-          <p className="text-center text-gray-600 mb-20 text-base font-light">
+          <p className="text-center text-gray-600 mb-12 text-base font-light">
             {t("גלה את המקומות המעניינים ביותר באזור", "Discover the most interesting places in the area")}
           </p>
           
@@ -382,13 +382,13 @@ export default function Home() {
       </section>
 
       {/* Amenities Section */}
-      <section id="amenities" className="py-32 bg-white">
+      <section id="amenities" className="py-16 bg-white">
         <div className="container mx-auto px-6">
           <h2 className="text-5xl font-light mb-4 text-center text-gray-900">
             {t("שירותים ומתקנים", "Amenities & Facilities")}
           </h2>
           <div className="w-16 h-px bg-primary mx-auto mb-4"></div>
-          <p className="text-center text-gray-600 mb-20 text-base font-light">
+          <p className="text-center text-gray-600 mb-12 text-base font-light">
             {t("כל מה שאתה צריך לשהייה מושלמת", "Everything you need for a perfect stay")}
           </p>
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
@@ -425,7 +425,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-32 bg-gray-50">
+      <section id="contact" className="py-16 bg-gray-50">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-5xl font-light mb-4 text-gray-900">
             {t("צור קשר", "Contact Us")}

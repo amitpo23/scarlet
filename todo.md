@@ -225,3 +225,8 @@
 - [x] Add routing for offers page
 - [x] Style offers page with clean minimalist design
 - [x] Move Amenities section to end of homepage before Contact
+
+## Reduce Section Spacing
+- [x] Reduce padding between all sections from py-32 to py-16
+- [x] Reduce subtitle margins from mb-20 to mb-12
+- [x] Make website more compact and shorter
