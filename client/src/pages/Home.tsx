@@ -207,14 +207,14 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-24 bg-white">
+      <section id="about" className="py-24 bg-gradient-to-b from-red-950 to-red-900">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-5xl font-bold mb-6 text-foreground">
+              <h2 className="text-6xl font-bold mb-6 gold-text" style={{ fontFamily: 'Playfair Display, serif' }}>
                 {t("אודות המלון", "About the Hotel")}
               </h2>
-              <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+              <div className="space-y-4 text-lg text-yellow-100 leading-relaxed">
                 <p>
                   {t(
                     "מלון Scarlet ממוקם במרכז תל אביב התוסס, ומציע חוויית אירוח בוטיקית ייחודית המשלבת עיצוב נועז עם נוחות מודרנית. המלון כולל גינה, טרסה ובר, ומעניק לאורחים חוויה בלתי נשכחת.",
@@ -228,32 +228,36 @@ export default function Home() {
                   )}
                 </p>
               </div>
-              <div className="mt-8 flex gap-4">
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-primary">8.9</div>
-                  <div className="text-sm text-muted-foreground">
+              <div className="mt-8 flex gap-8">
+                <div className="text-center gold-border p-6 bg-red-900/50">
+                  <div className="text-5xl font-bold gold-text" style={{ fontFamily: 'Playfair Display, serif' }}>8.9</div>
+                  <div className="text-sm text-yellow-200 mt-2">
                     {t("דירוג מצוין", "Excellent Rating")}
                   </div>
                 </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-primary">9.4</div>
-                  <div className="text-sm text-muted-foreground">
+                <div className="text-center gold-border p-6 bg-red-900/50">
+                  <div className="text-5xl font-bold gold-text" style={{ fontFamily: 'Playfair Display, serif' }}>9.4</div>
+                  <div className="text-sm text-yellow-200 mt-2">
                     {t("מיקום מעולה", "Perfect Location")}
                   </div>
                 </div>
               </div>
             </div>
             <div className="relative h-[600px]">
-              <img 
-                src="/images/001.webp" 
-                alt="Hotel entrance" 
-                className="absolute top-0 right-0 w-3/4 h-2/3 object-cover rounded-lg shadow-2xl"
-              />
-              <img 
-                src="/images/009.webp" 
-                alt="Hotel interior" 
-                className="absolute bottom-0 left-0 w-3/4 h-2/3 object-cover rounded-lg shadow-2xl"
-              />
+              <div className="absolute top-0 right-0 w-3/4 h-2/3 gold-border p-2 bg-red-950">
+                <img 
+                  src="/images/001.webp" 
+                  alt="Hotel entrance" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute bottom-0 left-0 w-3/4 h-2/3 gold-border p-2 bg-red-950">
+                <img 
+                  src="/images/009.webp" 
+                  alt="Hotel interior" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -270,7 +274,7 @@ export default function Home() {
           </p>
           <div className="grid md:grid-cols-2 gap-12">
             {rooms.map((room, idx) => (
-              <div key={idx} className="gold-border luxury-shadow bg-gradient-to-b from-red-900 to-red-950 p-2 hover:scale-105 transition-transform duration-300">
+              <div key={idx} className="gold-border luxury-shadow bg-gradient-to-b from-red-900 to-red-950 p-2 hover:scale-105 hover:shadow-2xl hover:shadow-yellow-600/50 transition-all duration-500 group">
                 <div className="relative h-80">
                   <img 
                     src={room.image} 
@@ -292,12 +296,12 @@ export default function Home() {
       </section>
 
       {/* Special Offers Section */}
-      <section id="offers" className="py-24 bg-gradient-to-br from-primary/5 to-secondary/10">
+      <section id="offers" className="py-24 bg-gradient-to-b from-red-900 to-red-950">
         <div className="container mx-auto px-6">
-          <h2 className="text-5xl font-bold mb-4 text-center text-foreground">
+          <h2 className="text-6xl font-bold mb-4 text-center gold-text" style={{ fontFamily: 'Playfair Display, serif' }}>
             {t("הצעות מיוחדות", "Special Offers")}
           </h2>
-          <p className="text-center text-muted-foreground mb-16 text-lg">
+          <p className="text-center text-yellow-200 mb-16 text-xl" style={{ fontFamily: 'Playfair Display, serif' }}>
             {t("חסכו עם המבצעים והחבילות המיוחדות שלנו", "Save with our special deals and packages")}
           </p>
           <SpecialOffers />
@@ -305,21 +309,21 @@ export default function Home() {
       </section>
 
       {/* Amenities Section */}
-      <section id="amenities" className="py-24 bg-secondary/20">
+      <section id="amenities" className="py-24 bg-gradient-to-b from-red-950 to-red-900">
         <div className="container mx-auto px-6">
-          <h2 className="text-5xl font-bold mb-4 text-center text-foreground">
+          <h2 className="text-6xl font-bold mb-4 text-center gold-text" style={{ fontFamily: 'Playfair Display, serif' }}>
             {t("שירותים ומתקנים", "Amenities & Facilities")}
           </h2>
-          <p className="text-center text-muted-foreground mb-16 text-lg">
+          <p className="text-center text-yellow-200 mb-16 text-xl" style={{ fontFamily: 'Playfair Display, serif' }}>
             {t("כל מה שאתה צריך לשהייה מושלמת", "Everything you need for a perfect stay")}
           </p>
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {amenities.map((amenity, idx) => {
               const Icon = amenity.icon;
               return (
-                <div key={idx} className="text-center p-6 rounded-lg hover:bg-secondary/20 transition-colors">
-                  <Icon className="w-12 h-12 mx-auto mb-4 text-primary" />
-                  <h3 className="font-semibold text-lg">{amenity.text}</h3>
+                <div key={idx} className="text-center p-8 gold-border bg-red-900/50 hover:bg-red-800/50 transition-all hover:scale-105">
+                  <Icon className="w-16 h-16 mx-auto mb-4 text-yellow-400" />
+                  <h3 className="font-semibold text-xl text-yellow-100">{amenity.text}</h3>
                 </div>
               );
             })}
@@ -347,12 +351,12 @@ export default function Home() {
       </section>
 
       {/* Guest Reviews Section */}
-      <section id="reviews" className="py-24 bg-white">
+      <section id="reviews" className="py-24 bg-gradient-to-b from-red-900 to-red-950">
         <div className="container mx-auto px-6">
-          <h2 className="text-5xl font-bold mb-4 text-center text-foreground">
-            {t("חוות דעת אורחים", "Guest Reviews")}
+          <h2 className="text-6xl font-bold mb-4 text-center gold-text" style={{ fontFamily: 'Playfair Display, serif' }}>
+            {t("חווות דעת אורחים", "Guest Reviews")}
           </h2>
-          <p className="text-center text-muted-foreground mb-16 text-lg">
+          <p className="text-center text-yellow-200 mb-16 text-xl" style={{ fontFamily: 'Playfair Display, serif' }}>
             {t("מה האורחים שלנו אומרים עלינו", "What our guests say about us")}
           </p>
           <GuestReviews />
@@ -360,12 +364,12 @@ export default function Home() {
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery" className="py-24 bg-secondary/20">
+      <section id="gallery" className="py-24 bg-gradient-to-b from-red-950 to-red-900">
         <div className="container mx-auto px-6">
-          <h2 className="text-5xl font-bold mb-4 text-center text-foreground">
+          <h2 className="text-6xl font-bold mb-4 text-center gold-text" style={{ fontFamily: 'Playfair Display, serif' }}>
             {t("גלריה", "Gallery")}
           </h2>
-          <p className="text-center text-muted-foreground mb-16 text-lg">
+          <p className="text-center text-yellow-200 mb-16 text-xl" style={{ fontFamily: 'Playfair Display, serif' }}>
             {t("גלה את המלון שלנו בתמונות מקצועיות", "Explore our hotel through professional photography")}
           </p>
           <PhotoGallery />
@@ -373,12 +377,12 @@ export default function Home() {
       </section>
 
       {/* Instagram Feed Section */}
-      <section id="instagram" className="py-24 bg-gradient-to-br from-pink-50 to-purple-50 dark:from-pink-950/20 dark:to-purple-950/20">
+      <section id="instagram" className="py-24 bg-gradient-to-b from-red-900 to-red-950">
         <div className="container mx-auto px-6">
-          <h2 className="text-5xl font-bold mb-4 text-center text-foreground">
+          <h2 className="text-6xl font-bold mb-4 text-center gold-text" style={{ fontFamily: 'Playfair Display, serif' }}>
             {t("האינסטגרם שלנו", "Our Instagram")}
           </h2>
-          <p className="text-center text-muted-foreground mb-16 text-lg">
+          <p className="text-center text-yellow-200 mb-16 text-xl" style={{ fontFamily: 'Playfair Display, serif' }}>
             {t("הצטרפו לקהילה שלנו וראו מה קורה במלון", "Join our community and see what's happening at the hotel")}
           </p>
           <InstagramFeed />
@@ -386,12 +390,12 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-24 bg-secondary/20">
+      <section id="faq" className="py-24 bg-gradient-to-b from-red-950 to-red-900">
         <div className="container mx-auto px-6">
-          <h2 className="text-5xl font-bold mb-4 text-center text-foreground">
+          <h2 className="text-6xl font-bold mb-4 text-center gold-text" style={{ fontFamily: 'Playfair Display, serif' }}>
             {t("שאלות נפוצות", "Frequently Asked Questions")}
           </h2>
-          <p className="text-center text-muted-foreground mb-16 text-lg">
+          <p className="text-center text-yellow-200 mb-16 text-xl" style={{ fontFamily: 'Playfair Display, serif' }}>
             {t("מצא תשובות לשאלות הנפוצות ביותר", "Find answers to the most common questions")}
           </p>
           <FAQ />
@@ -399,22 +403,22 @@ export default function Home() {
       </section>
 
       {/* Location Section */}
-      <section id="location" className="py-24 bg-white">
+      <section id="location" className="py-24 bg-gradient-to-b from-red-900 to-red-950">
         <div className="container mx-auto px-6">
-          <h2 className="text-5xl font-bold mb-4 text-center text-foreground">
+          <h2 className="text-6xl font-bold mb-4 text-center gold-text" style={{ fontFamily: 'Playfair Display, serif' }}>
             {t("מיקום ואטרקציות", "Location & Attractions")}
           </h2>
-          <p className="text-center text-muted-foreground mb-16 text-lg">
+          <p className="text-center text-yellow-200 mb-16 text-xl" style={{ fontFamily: 'Playfair Display, serif' }}>
             {t("גלה את המקומות המעניינים ביותר באזור", "Discover the most interesting places in the area")}
           </p>
           
           {/* Hotel Address */}
           <div className="mb-12 text-center">
-            <div className="inline-flex items-center gap-3 bg-secondary/30 px-6 py-4 rounded-lg">
-              <MapPin className="w-6 h-6 text-primary" />
+            <div className="inline-flex items-center gap-3 gold-border bg-red-900/50 px-8 py-6">
+              <MapPin className="w-6 h-6 text-yellow-400" />
               <div className={language === "he" ? "text-right" : "text-left"}>
-                <h3 className="font-bold text-lg">{t("מלון Scarlet", "Scarlet Hotel")}</h3>
-                <p className="text-muted-foreground">17 J. L. Gordon Street, {t("תל אביב", "Tel Aviv")}</p>
+                <h3 className="font-bold text-xl gold-text" style={{ fontFamily: 'Playfair Display, serif' }}>{t("מלון Scarlet", "Scarlet Hotel")}</h3>
+                <p className="text-yellow-100 text-lg">17 J. L. Gordon Street, {t("תל אביב", "Tel Aviv")}</p>
               </div>
             </div>
           </div>
@@ -425,52 +429,52 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 bg-primary text-primary-foreground">
+      <section id="contact" className="py-24 bg-gradient-to-b from-red-950 to-black">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-5xl font-bold mb-4">
+          <h2 className="text-6xl font-bold mb-4 gold-text" style={{ fontFamily: 'Playfair Display, serif' }}>
             {t("צור קשר", "Contact Us")}
           </h2>
-          <p className="text-lg mb-12 opacity-90">
+          <p className="text-xl mb-12 text-yellow-200" style={{ fontFamily: 'Playfair Display, serif' }}>
             {t("נשמח לעמוד לשירותכם", "We're here to help")}
           </p>
           <div className="flex flex-col md:flex-row gap-8 justify-center items-center mb-12">
-            <div className="flex items-center gap-3">
-              <Phone className="w-6 h-6" />
-              <span className="text-lg">+972-3-123-4567</span>
+            <div className="flex items-center gap-3 gold-border bg-red-900/50 px-6 py-4">
+              <Phone className="w-6 h-6 text-yellow-400" />
+              <span className="text-lg text-yellow-100">+972-3-123-4567</span>
             </div>
-            <div className="flex items-center gap-3">
-              <Mail className="w-6 h-6" />
-              <span className="text-lg">info@scarlethotel.co.il</span>
+            <div className="flex items-center gap-3 gold-border bg-red-900/50 px-6 py-4">
+              <Mail className="w-6 h-6 text-yellow-400" />
+              <span className="text-lg text-yellow-100">info@scarlethotel.co.il</span>
             </div>
           </div>
-          <Button size="lg" variant="secondary" className="text-lg px-8 py-6" onClick={() => openBooking()}>
+          <Button size="lg" className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-bold text-xl px-12 py-8 rounded-none border-4 border-yellow-400" onClick={() => openBooking()}>
             {t("הזמן עכשיו", "Book Now")}
           </Button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-accent text-accent-foreground py-12">
+      <footer className="bg-black py-12 border-t-4 border-yellow-600">
         <div className="container mx-auto px-6 text-center">
-          <h3 className="text-2xl font-bold mb-4">Scarlet Hotel Tel Aviv</h3>
-          <p className="text-sm opacity-80 mb-4">
+          <h3 className="text-3xl font-bold mb-4 gold-text" style={{ fontFamily: 'Playfair Display, serif' }}>Scarlet Hotel Tel Aviv</h3>
+          <p className="text-lg text-yellow-200 mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
             {t("מלון בוטיק יוקרתי בלב תל אביב", "A luxury boutique hotel in the heart of Tel Aviv")}
           </p>
           <div className="mt-8 space-y-4">
-            <div className="flex justify-center gap-6 text-sm">
-              <a href="/accessibility" className="hover:text-primary transition-colors opacity-80 hover:opacity-100">
+            <div className="flex justify-center gap-6 text-base">
+              <a href="/accessibility" className="text-yellow-400 hover:text-yellow-300 transition-colors">
                 {t("הצהרת נגישות", "Accessibility")}
               </a>
-              <span className="opacity-60">|</span>
-              <a href="/privacy" className="hover:text-primary transition-colors opacity-80 hover:opacity-100">
-                {t("מדיניות פרטיות", "Privacy Policy")}
+              <span className="text-yellow-600">|</span>
+              <a href="/privacy" className="text-yellow-400 hover:text-yellow-300 transition-colors">
+                {t("מדיניות פריטיות", "Privacy Policy")}
               </a>
-              <span className="opacity-60">|</span>
-              <a href="/terms" className="hover:text-primary transition-colors opacity-80 hover:opacity-100">
+              <span className="text-yellow-600">|</span>
+              <a href="/terms" className="text-yellow-400 hover:text-yellow-300 transition-colors">
                 {t("תנאי שימוש", "Terms of Service")}
               </a>
             </div>
-            <div className="text-xs opacity-60">
+            <div className="text-sm text-yellow-600">
               © 2025 Scarlet Hotel. All rights reserved.
             </div>
           </div>
