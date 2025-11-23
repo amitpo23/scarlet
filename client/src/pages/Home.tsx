@@ -98,8 +98,8 @@ export default function Home() {
       <ScrollProgress />
       
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm shadow-md border-b border-border" role="navigation" aria-label={t("ניווט ראשי", "Main navigation")}>
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+      <nav className="fixed top-0 left-0 right-0 z-50 burgundy-bg shadow-2xl border-b-4 border-yellow-500" role="navigation" aria-label={t("ניווט ראשי", "Main navigation")}>
+        <div className="container mx-auto px-6 py-3 flex justify-between items-center">
           <img src={APP_LOGO} alt={t("לוגו מלון Scarlet", "Scarlet Hotel Logo")} className="h-16 md:h-20" />
           {/* Mobile Menu Button */}
           <button
@@ -111,16 +111,16 @@ export default function Home() {
           </button>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex gap-8 text-sm" role="menubar">
-             <a href="#about" className="hover:text-primary transition-colors">{t("אודות", "About")}</a>
-            <a href="#rooms" className="hover:text-primary transition-colors">{t("חדרים", "Rooms")}</a>
-            <a href="#offers" className="hover:text-primary transition-colors">{t("הצעות", "Offers")}</a>
-            <a href="#amenities" className="hover:text-primary transition-colors">{t("שירותים", "Amenities")}</a>
-            <a href="#reviews" className="hover:text-primary transition-colors">{t("חוות דעת", "Reviews")}</a>
-            <a href="#gallery" className="hover:text-primary transition-colors">{t("גלריה", "Gallery")}</a>
-            <a href="#faq" className="hover:text-primary transition-colors">{t("שאלות", "FAQ")}</a>
-            <a href="#location" className="hover:text-primary transition-colors">{t("מיקום", "Location")}</a>
-            <a href="#contact" className="hover:text-primary transition-colors">{t("צור קשר", "Contact")}</a>
+          <div className="hidden md:flex gap-6 text-sm font-semibold" role="menubar" style={{ fontFamily: 'Playfair Display, serif' }}>
+             <a href="#about" className="text-yellow-400 hover:text-yellow-200 transition-colors">{t("אודות", "About")}</a>
+            <a href="#rooms" className="text-yellow-400 hover:text-yellow-200 transition-colors">{t("חדרים", "Rooms")}</a>
+            <a href="#offers" className="text-yellow-400 hover:text-yellow-200 transition-colors">{t("הצעות", "Offers")}</a>
+            <a href="#amenities" className="text-yellow-400 hover:text-yellow-200 transition-colors">{t("שירותים", "Amenities")}</a>
+            <a href="#reviews" className="text-yellow-400 hover:text-yellow-200 transition-colors">{t("חווות דעת", "Reviews")}</a>
+            <a href="#gallery" className="text-yellow-400 hover:text-yellow-200 transition-colors">{t("גלריה", "Gallery")}</a>
+            <a href="#faq" className="text-yellow-400 hover:text-yellow-200 transition-colors">{t("שאלות", "FAQ")}</a>
+            <a href="#location" className="text-yellow-400 hover:text-yellow-200 transition-colors">{t("מיקום", "Location")}</a>
+            <a href="#contact" className="text-yellow-400 hover:text-yellow-200 transition-colors">{t("צור קשר", "Contact")}</a>
           </div>
           <div className="flex items-center gap-4" role="toolbar" aria-label={t("כפתורי פעולה", "Action buttons")}>
             <Button
@@ -132,7 +132,7 @@ export default function Home() {
               <Languages className="w-4 h-4" />
               {language === "he" ? "EN" : "עב"}
             </Button>
-            <Button className="bg-primary hover:bg-primary/90" onClick={() => openBooking()}>
+            <Button size="sm" className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-bold border-2 border-yellow-400 rounded-none" onClick={() => openBooking()}>
               {t("הזמן עכשיו", "Book Now")}
             </Button>
           </div>
@@ -171,23 +171,24 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden pt-24">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden burgundy-bg">
         <div 
-          className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
+          className="absolute inset-0 bg-cover bg-center transition-all duration-1000 opacity-40"
           style={{ backgroundImage: `url(${galleryImages[activeImage]})` }}
         >
-          <div className="absolute inset-0 bg-black/40"></div>
         </div>
-        <div className="relative z-10 text-center text-white px-4">
-          <h2 className="text-6xl md:text-8xl font-bold mb-6 animate-fade-in">Scarlet Hotel</h2>
-          <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
-            {t("חוויה בוטיקית ייחודית בלב תל אביב", "A unique boutique experience in the heart of Tel Aviv")}
+        <div className="relative z-10 text-center text-white px-4 max-w-6xl mx-auto">
+          <h1 className="text-8xl md:text-9xl font-bold mb-4 gold-text animate-fade-in" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.05em' }}>
+            SCARLET
+          </h1>
+          <p className="text-3xl md:text-4xl mb-12 gold-text" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 600 }}>
+            {t("חוויית יוקרה סוחפת", "Immersive Luxury Experience")}
           </p>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6" onClick={() => openBooking()}>
+          <Button size="lg" className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-bold text-xl px-12 py-8 rounded-none border-2 border-yellow-400 shadow-2xl" onClick={() => openBooking()}>
             {t("הזמן עכשיו", "Book Now")}
           </Button>
           {/* Weather Widget */}
-          <div className="mt-8">
+          <div className="mt-12">
             <WeatherWidget />
           </div>
         </div>
@@ -259,17 +260,17 @@ export default function Home() {
       </section>
 
       {/* Rooms Section */}
-      <section id="rooms" className="py-24 bg-secondary/30">
+      <section id="rooms" className="py-24 burgundy-bg">
         <div className="container mx-auto px-6">
-          <h2 className="text-5xl font-bold mb-4 text-center text-foreground">
-            {t("החדרים שלנו", "Our Rooms")}
+          <h2 className="text-6xl font-bold mb-4 text-center gold-text" style={{ fontFamily: 'Playfair Display, serif' }}>
+            {t("החדרים שלנו", "Rooms & Suites")}
           </h2>
-          <p className="text-center text-muted-foreground mb-16 text-lg">
+          <p className="text-center text-yellow-200 mb-16 text-xl" style={{ fontFamily: 'Playfair Display, serif' }}>
             {t("בחר את החדר המושלם עבורך", "Choose the perfect room for you")}
           </p>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-12">
             {rooms.map((room, idx) => (
-              <Card key={idx} className="overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+              <div key={idx} className="gold-border luxury-shadow bg-gradient-to-b from-red-900 to-red-950 p-2 hover:scale-105 transition-transform duration-300">
                 <div className="relative h-80">
                   <img 
                     src={room.image} 
@@ -277,14 +278,14 @@ export default function Home() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-4">{room.name}</h3>
-                  <p className="text-muted-foreground mb-6">{room.description}</p>
-                  <Button className="w-full bg-primary hover:bg-primary/90" onClick={() => openBooking(idx === 0 ? "economy" : idx === 1 ? "classic" : idx === 2 ? "classic_balcony" : "deluxe")}>
+                <div className="p-8 bg-gradient-to-b from-red-900 to-red-950">
+                  <h3 className="text-3xl font-bold mb-4 gold-text" style={{ fontFamily: 'Playfair Display, serif' }}>{room.name}</h3>
+                  <p className="text-yellow-100 mb-6 text-lg">{room.description}</p>
+                  <Button className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-bold text-lg py-6 rounded-none border-2 border-yellow-400" onClick={() => openBooking(idx === 0 ? "economy" : idx === 1 ? "classic" : idx === 2 ? "classic_balcony" : "deluxe")}>
                     {t("הזמן חדר", "Book Room")}
                   </Button>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
         </div>

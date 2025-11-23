@@ -171,7 +171,17 @@
 - [x] Add badges to README.md (build status, license, version)
 
 ## Deployment
-- [ ] Install Vercel CLI
-- [ ] Configure Vercel project
-- [ ] Deploy to Vercel
+- [x] Install Vercel CLI
+- [x] Configure Vercel project
+- [x] Push code to GitHub
+- [ ] Import project to Vercel
 - [ ] Configure custom domain DNS
+
+## Design Overhaul - Luxury Theme
+- [x] Update color scheme to deep red, gold, burgundy
+- [x] Change typography to luxury serif fonts (gold metallic)
+- [x] Redesign hero section with large centered text
+- [x] Add gold-framed card designs
+- [ ] Implement decorative elements (palm trees, warm lighting)
+- [x] Update navigation bar to luxury style
+- [ ] Redesign remaining sections with new theme
