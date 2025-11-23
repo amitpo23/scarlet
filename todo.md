@@ -270,3 +270,6 @@
 - [x] Debug and fix non-working map component (fixed marker API compatibility)
 - [x] Move "Location & Attractions" section immediately after "About" section
 - [x] Ensure map displays correctly with markers (hotel in red, attractions in blue)
+
+## Instagram Section Reordering
+- [x] Move Instagram section to bottom of page, just before Contact section

@@ -372,19 +372,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Instagram Feed Section */}
-      <section id="instagram" ref={instagramAnim.ref as any} className={`py-16 bg-gray-50 transition-all duration-700 ${instagramAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <div className="container mx-auto px-6">
-          <h2 className="text-5xl font-light mb-4 text-center text-gray-900">
-            {t("האינסטגרם שלנו", "Our Instagram")}
-          </h2>
-          <div className="w-16 h-px bg-primary mx-auto mb-4"></div>
-          <p className="text-center text-gray-600 mb-12 text-base font-light">
-            {t("הצטרפו לקהילה שלנו וראו מה קורה במלון", "Join our community and see what's happening at the hotel")}
-          </p>
-          <InstagramFeed />
-        </div>
-      </section>
 
       {/* FAQ Section */}
       <section id="faq" ref={faqAnim.ref as any} className={`py-16 bg-white transition-all duration-700 ${faqAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -441,6 +428,20 @@ export default function Home() {
               </ul>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Instagram Feed Section - Moved to bottom */}
+      <section id="instagram" ref={instagramAnim.ref as any} className={`py-16 bg-white transition-all duration-700 ${instagramAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className="container mx-auto px-6">
+          <h2 className="text-5xl font-light mb-4 text-center text-gray-900">
+            {t("האינסטגרם שלנו", "Our Instagram")}
+          </h2>
+          <div className="w-16 h-px bg-primary mx-auto mb-4"></div>
+          <p className="text-center text-gray-600 mb-12 text-base font-light">
+            {t("הצטרפו לקהילה שלנו וראו מה קורה במלון", "Join our community and see what's happening at the hotel")}
+          </p>
+          <InstagramFeed />
         </div>
       </section>
 
