@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { MapPin, Phone, Mail, Wifi, Coffee, Car, Wind, Shield, Users, Languages } from "lucide-react";
+import { MapPin, Phone, Mail, Wifi, Coffee, Car, Wind, Shield, Users } from "lucide-react";
+import { Languages, Menu, X } from "lucide-react";
 import { APP_LOGO } from "@/const";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -14,10 +15,13 @@ import { WhatsAppWidget } from "@/components/WhatsAppWidget";
 import { SpecialOffers } from "@/components/SpecialOffers";
 import { InstagramFeed } from "@/components/InstagramFeed";
 import { AIChatbot } from "@/components/AIChatbot";
+import { BackToTop } from "@/components/BackToTop";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 export default function Home() {
   const [activeImage, setActiveImage] = useState(0);
   const [bookingOpen, setBookingOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedRoom, setSelectedRoom] = useState<string>();
   const { language, setLanguage, t } = useLanguage();
 
@@ -90,10 +94,23 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      {/* Scroll Progress */}
+      <ScrollProgress />
+      
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm shadow-md border-b border-border" role="navigation" aria-label={t("ניווט ראשי", "Main navigation")}>
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <img src={APP_LOGO} alt={t("לוגו מלון Scarlet", "Scarlet Hotel Logo")} className="h-16 md:h-20" />
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 hover:bg-secondary/20 rounded transition-colors"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={t("תפריט", "Menu")}
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+          
+          {/* Desktop Navigation */}
           <div className="hidden md:flex gap-8 text-sm" role="menubar">
              <a href="#about" className="hover:text-primary transition-colors">{t("אודות", "About")}</a>
             <a href="#rooms" className="hover:text-primary transition-colors">{t("חדרים", "Rooms")}</a>
@@ -120,10 +137,41 @@ export default function Home() {
             </Button>
           </div>
         </div>
+        
+        {/* Mobile Menu Dropdown */}
+        {mobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border shadow-lg">
+            <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
+              <a href="#about" className="hover:text-primary transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>{t("אודות", "About")}</a>
+              <a href="#rooms" className="hover:text-primary transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>{t("חדרים", "Rooms")}</a>
+              <a href="#offers" className="hover:text-primary transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>{t("הצעות", "Offers")}</a>
+              <a href="#amenities" className="hover:text-primary transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>{t("שירותים", "Amenities")}</a>
+              <a href="#reviews" className="hover:text-primary transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>{t("חוות דעת", "Reviews")}</a>
+              <a href="#gallery" className="hover:text-primary transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>{t("גלריה", "Gallery")}</a>
+              <a href="#faq" className="hover:text-primary transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>{t("שאלות", "FAQ")}</a>
+              <a href="#location" className="hover:text-primary transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>{t("מיקום", "Location")}</a>
+              <a href="#contact" className="hover:text-primary transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>{t("צור קשר", "Contact")}</a>
+              <div className="flex gap-2 pt-2 border-t border-border">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setLanguage(language === "he" ? "en" : "he")}
+                  className="flex items-center gap-2 flex-1"
+                >
+                  <Languages className="w-4 h-4" />
+                  {language === "he" ? "EN" : "עב"}
+                </Button>
+                <Button className="bg-primary hover:bg-primary/90 flex-1" onClick={() => { openBooking(); setMobileMenuOpen(false); }}>
+                  {t("הזמן עכשיו", "Book Now")}
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden pt-24">
         <div 
           className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
           style={{ backgroundImage: `url(${galleryImages[activeImage]})` }}
@@ -432,6 +480,7 @@ export default function Home() {
       <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
       <WhatsAppWidget />
       <AIChatbot />
+      <BackToTop />
     </div>
   );
 }
