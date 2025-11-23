@@ -230,3 +230,10 @@
 - [x] Reduce padding between all sections from py-32 to py-16
 - [x] Reduce subtitle margins from mb-20 to mb-12
 - [x] Make website more compact and shorter
+
+## Floating Book Now Button
+- [x] Create FloatingBookButton component
+- [x] Show button only after user scrolls down (300px threshold)
+- [x] Position button at bottom right (or left for RTL)
+- [x] Open booking modal on click
+- [x] Style with clean design and scarlet accent

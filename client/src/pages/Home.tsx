@@ -12,7 +12,7 @@ import { PhotoGallery } from "@/components/PhotoGallery";
 import { GuestReviews } from "@/components/GuestReviews";
 import { FAQ } from "@/components/FAQ";
 import { WhatsAppWidget } from "@/components/WhatsAppWidget";
-
+import { FloatingBookButton } from "@/components/FloatingBookButton";
 import { InstagramFeed } from "@/components/InstagramFeed";
 import { AIChatbot } from "@/components/AIChatbot";
 import { BackToTop } from "@/components/BackToTop";
@@ -480,6 +480,7 @@ export default function Home() {
 
       {/* Booking Modal */}
       <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
+      <FloatingBookButton onClick={() => openBooking()} />
       <WhatsAppWidget />
       <AIChatbot />
       <BackToTop />
