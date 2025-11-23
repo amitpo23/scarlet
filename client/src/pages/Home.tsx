@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Phone, Mail, Wifi, Coffee, Car, Wind, Shield, Users } from "lucide-react";
 import { Languages, Menu, X } from "lucide-react";
 import { APP_LOGO } from "@/const";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { BookingModal } from "@/components/BookingModal";
 import { WeatherWidget } from "@/components/WeatherWidget";
