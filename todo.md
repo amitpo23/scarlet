@@ -207,3 +207,13 @@
 - [x] Optimize and compress all images to WebP format
 - [x] Implement lazy loading for images
 - [ ] Minify CSS and JavaScript (handled by Vite build)
+
+## Clean Minimalist Design Redesign
+- [x] Change color scheme to clean white/cream with subtle scarlet accents
+- [x] Redesign navigation bar to minimalist white/transparent style
+- [x] Simplify hero section with clean typography and whitespace
+- [x] Update all sections to clean, airy design with minimal scarlet touches
+- [x] Simplify photo gallery - remove heavy effects and frames
+- [x] Update buttons and CTAs with subtle scarlet accents
+- [x] Add generous whitespace throughout for breathing room
+- [x] Test new design across all sections
