@@ -12,7 +12,7 @@ import { PhotoGallery } from "@/components/PhotoGallery";
 import { GuestReviews } from "@/components/GuestReviews";
 import { FAQ } from "@/components/FAQ";
 import { WhatsAppWidget } from "@/components/WhatsAppWidget";
-import { SpecialOffers } from "@/components/SpecialOffers";
+
 import { InstagramFeed } from "@/components/InstagramFeed";
 import { AIChatbot } from "@/components/AIChatbot";
 import { BackToTop } from "@/components/BackToTop";
@@ -114,7 +114,7 @@ export default function Home() {
           <div className="hidden md:flex gap-8 text-sm" role="menubar">
              <a href="#about" className="text-gray-700 hover:text-primary transition-colors">{t("אודות", "About")}</a>
             <a href="#rooms" className="text-gray-700 hover:text-primary transition-colors">{t("חדרים", "Rooms")}</a>
-            <a href="#offers" className="text-gray-700 hover:text-primary transition-colors">{t("הצעות", "Offers")}</a>
+            <a href="/offers" className="text-gray-700 hover:text-primary transition-colors">{t("הצעות", "Offers")}</a>
             <a href="#amenities" className="text-gray-700 hover:text-primary transition-colors">{t("שירותים", "Amenities")}</a>
             <a href="#reviews" className="text-gray-700 hover:text-primary transition-colors">{t("חווות דעת", "Reviews")}</a>
             <a href="#gallery" className="text-gray-700 hover:text-primary transition-colors">{t("גלריה", "Gallery")}</a>
@@ -144,7 +144,7 @@ export default function Home() {
             <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
               <a href="#about" className="hover:text-primary transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>{t("אודות", "About")}</a>
               <a href="#rooms" className="hover:text-primary transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>{t("חדרים", "Rooms")}</a>
-              <a href="#offers" className="hover:text-primary transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>{t("הצעות", "Offers")}</a>
+              <a href="/offers" className="hover:text-primary transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>{t("הצעות", "Offers")}</a>
               <a href="#amenities" className="hover:text-primary transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>{t("שירותים", "Amenities")}</a>
               <a href="#reviews" className="hover:text-primary transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>{t("חוות דעת", "Reviews")}</a>
               <a href="#gallery" className="hover:text-primary transition-colors py-2" onClick={() => setMobileMenuOpen(false)}>{t("גלריה", "Gallery")}</a>
@@ -298,63 +298,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Special Offers Section */}
-      <section id="offers" className="py-32 bg-gray-50">
-        <div className="container mx-auto px-6">
-          <h2 className="text-5xl font-light mb-4 text-center text-gray-900">
-            {t("הצעות מיוחדות", "Special Offers")}
-          </h2>
-          <div className="w-16 h-px bg-primary mx-auto mb-4"></div>
-          <p className="text-center text-gray-600 mb-20 text-base font-light">
-            {t("חסכו עם המבצעים והחבילות המיוחדות שלנו", "Save with our special deals and packages")}
-          </p>
-          <SpecialOffers />
-        </div>
-      </section>
-
-      {/* Amenities Section */}
-      <section id="amenities" className="py-32 bg-white">
-        <div className="container mx-auto px-6">
-          <h2 className="text-5xl font-light mb-4 text-center text-gray-900">
-            {t("שירותים ומתקנים", "Amenities & Facilities")}
-          </h2>
-          <div className="w-16 h-px bg-primary mx-auto mb-4"></div>
-          <p className="text-center text-gray-600 mb-20 text-base font-light">
-            {t("כל מה שאתה צריך לשהייה מושלמת", "Everything you need for a perfect stay")}
-          </p>
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {amenities.map((amenity, idx) => {
-              const Icon = amenity.icon;
-              return (
-                <div key={idx} className="text-center p-8 hover:bg-gray-50 transition-colors">
-                  <Icon className="w-12 h-12 mx-auto mb-4 text-primary" />
-                  <h3 className="font-light text-lg text-gray-900">{amenity.text}</h3>
-                </div>
-              );
-            })}
-          </div>
-          <div className="mt-20 bg-gray-50 p-12 text-center">
-            <h3 className="text-2xl font-light mb-8 text-gray-900">
-              {t("כל חדר כולל", "Every room includes")}
-            </h3>
-            <div className="grid md:grid-cols-2 gap-4 mt-8 max-w-2xl mx-auto">
-              <ul className={`space-y-2 ${language === "he" ? "text-right" : "text-left"}`}>
-                <li>• {t("ארון בגדים מרווח", "Spacious wardrobe")}</li>
-                <li>• {t("קומקום חשמלי", "Electric kettle")}</li>
-                <li>• {t("מקרר", "Refrigerator")}</li>
-                <li>• {t("כספת אישית", "Personal safe")}</li>
-              </ul>
-              <ul className={`space-y-2 ${language === "he" ? "text-right" : "text-left"}`}>
-                <li>• {t("טלוויזיה בעלת מסך שטוח", "Flat-screen TV")}</li>
-                <li>• {t("חדר רחצה פרטי עם מקלחת", "Private bathroom with shower")}</li>
-                <li>• {t("מייבש שיער", "Hair dryer")}</li>
-                <li>• {t("מצעים ומגבות איכותיים", "Quality linens and towels")}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Guest Reviews Section */}
       <section id="reviews" className="py-32 bg-gray-50">
         <div className="container mx-auto px-6">
@@ -438,8 +381,51 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Amenities Section */}
+      <section id="amenities" className="py-32 bg-white">
+        <div className="container mx-auto px-6">
+          <h2 className="text-5xl font-light mb-4 text-center text-gray-900">
+            {t("שירותים ומתקנים", "Amenities & Facilities")}
+          </h2>
+          <div className="w-16 h-px bg-primary mx-auto mb-4"></div>
+          <p className="text-center text-gray-600 mb-20 text-base font-light">
+            {t("כל מה שאתה צריך לשהייה מושלמת", "Everything you need for a perfect stay")}
+          </p>
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            {amenities.map((amenity, idx) => {
+              const Icon = amenity.icon;
+              return (
+                <div key={idx} className="text-center p-8 hover:bg-gray-50 transition-colors">
+                  <Icon className="w-12 h-12 mx-auto mb-4 text-primary" />
+                  <h3 className="font-light text-lg text-gray-900">{amenity.text}</h3>
+                </div>
+              );
+            })}
+          </div>
+          <div className="mt-20 bg-gray-50 p-12 text-center">
+            <h3 className="text-2xl font-light mb-8 text-gray-900">
+              {t("כל חדר כולל", "Every room includes")}
+            </h3>
+            <div className="grid md:grid-cols-2 gap-4 mt-8 max-w-2xl mx-auto">
+              <ul className={`space-y-2 ${language === "he" ? "text-right" : "text-left"}`}>
+                <li>• {t("ארון בגדים מרווח", "Spacious wardrobe")}</li>
+                <li>• {t("קומקום חשמלי", "Electric kettle")}</li>
+                <li>• {t("מקרר", "Refrigerator")}</li>
+                <li>• {t("כספת אישית", "Personal safe")}</li>
+              </ul>
+              <ul className={`space-y-2 ${language === "he" ? "text-right" : "text-left"}`}>
+                <li>• {t("טלוויזיה בעלת מסך שטוח", "Flat-screen TV")}</li>
+                <li>• {t("חדר רחצה פרטי עם מקלחת", "Private bathroom with shower")}</li>
+                <li>• {t("מייבש שיער", "Hair dryer")}</li>
+                <li>• {t("מצעים ומגבות איכותיים", "Quality linens and towels")}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
-      <section id="contact" className="py-32 bg-white">
+      <section id="contact" className="py-32 bg-gray-50">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-5xl font-light mb-4 text-gray-900">
             {t("צור קשר", "Contact Us")}

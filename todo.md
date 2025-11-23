@@ -217,3 +217,11 @@
 - [x] Update buttons and CTAs with subtle scarlet accents
 - [x] Add generous whitespace throughout for breathing room
 - [x] Test new design across all sections
+
+## Separate Offers Page
+- [x] Create new `/offers` page component
+- [x] Remove Special Offers section from homepage
+- [x] Update navigation to link to new offers page
+- [x] Add routing for offers page
+- [x] Style offers page with clean minimalist design
+- [x] Move Amenities section to end of homepage before Contact
