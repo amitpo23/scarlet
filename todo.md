@@ -149,3 +149,8 @@
 - [x] Design chat interface with message bubbles
 - [x] Add floating chatbot button
 - [x] Integrate chatbot into website
+
+## Documentation
+- [x] Create comprehensive README.md file
+- [x] Document project structure and technologies
+- [x] Add setup instructions for developers
