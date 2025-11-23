@@ -169,3 +169,9 @@
 ## Documentation Improvements
 - [x] Create CONTRIBUTING.md with contribution guidelines
 - [x] Add badges to README.md (build status, license, version)
+
+## Deployment
+- [ ] Install Vercel CLI
+- [ ] Configure Vercel project
+- [ ] Deploy to Vercel
+- [ ] Configure custom domain DNS
