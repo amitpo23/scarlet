@@ -237,3 +237,16 @@
 - [x] Position button at bottom right (or left for RTL)
 - [x] Open booking modal on click
 - [x] Style with clean design and scarlet accent
+
+## Scroll Animations
+- [x] Create useScrollAnimation hook with Intersection Observer
+- [x] Add fade-in and slide-up animations to CSS
+- [x] Apply animations to all major sections (About, Rooms, Reviews, Gallery, Instagram, FAQ, Location, Amenities, Contact)
+- [x] Test smooth performance across devices
+
+## SEO Optimization
+- [x] Update page title to include "האתר הרשמי של המלון"
+- [x] Add meta description with keywords
+- [x] Add Open Graph tags for social sharing (Facebook/LinkedIn)
+- [x] Add Twitter Card tags
+- [x] Add canonical URL and language tags (he/en)

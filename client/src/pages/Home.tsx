@@ -17,6 +17,7 @@ import { InstagramFeed } from "@/components/InstagramFeed";
 import { AIChatbot } from "@/components/AIChatbot";
 import { BackToTop } from "@/components/BackToTop";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export default function Home() {
   const [activeImage, setActiveImage] = useState(0);
@@ -24,6 +25,17 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedRoom, setSelectedRoom] = useState<string>();
   const { language, setLanguage, t } = useLanguage();
+
+  // Scroll animations for sections
+  const aboutAnim = useScrollAnimation();
+  const roomsAnim = useScrollAnimation();
+  const reviewsAnim = useScrollAnimation();
+  const galleryAnim = useScrollAnimation();
+  const instagramAnim = useScrollAnimation();
+  const faqAnim = useScrollAnimation();
+  const locationAnim = useScrollAnimation();
+  const amenitiesAnim = useScrollAnimation();
+  const contactAnim = useScrollAnimation();
 
   const openBooking = (roomType?: string) => {
     setSelectedRoom(roomType);
@@ -208,7 +220,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-16 bg-gray-50">
+      <section id="about" ref={aboutAnim.ref as any} className={`py-16 bg-gray-50 transition-all duration-700 ${aboutAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-20 items-center">
             <div>
@@ -266,7 +278,7 @@ export default function Home() {
       </section>
 
       {/* Rooms Section */}
-      <section id="rooms" className="py-16 bg-white">
+      <section id="rooms" ref={roomsAnim.ref as any} className={`py-16 bg-white transition-all duration-700 ${roomsAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="container mx-auto px-6">
           <h2 className="text-5xl font-light mb-4 text-center text-gray-900">
             {t("החדרים שלנו", "Rooms & Suites")}
@@ -299,7 +311,7 @@ export default function Home() {
       </section>
 
       {/* Guest Reviews Section */}
-      <section id="reviews" className="py-16 bg-gray-50">
+      <section id="reviews" ref={reviewsAnim.ref as any} className={`py-16 bg-gray-50 transition-all duration-700 ${reviewsAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="container mx-auto px-6">
           <h2 className="text-5xl font-light mb-4 text-center text-gray-900">
             {t("חווות דעת אורחים", "Guest Reviews")}
@@ -313,7 +325,7 @@ export default function Home() {
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery" className="py-16 bg-white">
+      <section id="gallery" ref={galleryAnim.ref as any} className={`py-16 bg-white transition-all duration-700 ${galleryAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="container mx-auto px-6">
           <h2 className="text-5xl font-light mb-4 text-center text-gray-900">
             {t("גלריה", "Gallery")}
@@ -327,7 +339,7 @@ export default function Home() {
       </section>
 
       {/* Instagram Feed Section */}
-      <section id="instagram" className="py-16 bg-gray-50">
+      <section id="instagram" ref={instagramAnim.ref as any} className={`py-16 bg-gray-50 transition-all duration-700 ${instagramAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="container mx-auto px-6">
           <h2 className="text-5xl font-light mb-4 text-center text-gray-900">
             {t("האינסטגרם שלנו", "Our Instagram")}
@@ -341,7 +353,7 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-16 bg-white">
+      <section id="faq" ref={faqAnim.ref as any} className={`py-16 bg-white transition-all duration-700 ${faqAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="container mx-auto px-6">
           <h2 className="text-5xl font-light mb-4 text-center text-gray-900">
             {t("שאלות נפוצות", "Frequently Asked Questions")}
@@ -355,7 +367,7 @@ export default function Home() {
       </section>
 
       {/* Location Section */}
-      <section id="location" className="py-16 bg-gray-50">
+      <section id="location" ref={locationAnim.ref as any} className={`py-16 bg-gray-50 transition-all duration-700 ${locationAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="container mx-auto px-6">
           <h2 className="text-5xl font-light mb-4 text-center text-gray-900">
             {t("מיקום ואטרקציות", "Location & Attractions")}
@@ -382,7 +394,7 @@ export default function Home() {
       </section>
 
       {/* Amenities Section */}
-      <section id="amenities" className="py-16 bg-white">
+      <section id="amenities" ref={amenitiesAnim.ref as any} className={`py-16 bg-white transition-all duration-700 ${amenitiesAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="container mx-auto px-6">
           <h2 className="text-5xl font-light mb-4 text-center text-gray-900">
             {t("שירותים ומתקנים", "Amenities & Facilities")}
@@ -425,7 +437,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 bg-gray-50">
+      <section id="contact" ref={contactAnim.ref as any} className={`py-16 bg-gray-50 transition-all duration-700 ${contactAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-5xl font-light mb-4 text-gray-900">
             {t("צור קשר", "Contact Us")}
