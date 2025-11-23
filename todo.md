@@ -259,3 +259,9 @@
 - [x] Add contact information (phone, email, reservations)
 - [x] Include image gallery URLs and social media links
 - [x] Add check-in/out times, room count, and policies
+
+## Hero Section Redesign - Clear Images
+- [x] Remove blur/fade overlay from hero images (opacity-20 removed)
+- [x] Display sharp, inviting hotel photos at full quality
+- [x] Redesign text overlay to not obscure images (semi-transparent white card)
+- [x] Ensure carousel shows hotel at its best with subtle gradient

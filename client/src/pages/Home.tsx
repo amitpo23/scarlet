@@ -183,25 +183,32 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-white">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Image - Full Quality, No Blur */}
         <div 
-          className="absolute inset-0 bg-cover bg-center transition-all duration-1000 opacity-20"
+          className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
           style={{ backgroundImage: `url(${galleryImages[activeImage]})` }}
         >
+          {/* Subtle gradient overlay only at bottom for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
         </div>
+        
+        {/* Content with semi-transparent background */}
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-          <h1 className="text-7xl md:text-8xl font-light mb-6 text-gray-900 animate-fade-in tracking-wide">
-            SCARLET
-          </h1>
-          <div className="w-24 h-px bg-primary mx-auto mb-6"></div>
-          <p className="text-xl md:text-2xl mb-12 text-gray-600 font-light">
-            {t("חוויית אירוח בוטיקית בלב תל אביב", "Boutique Hospitality in the Heart of Tel Aviv")}
-          </p>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-white px-10 py-6 text-lg" onClick={() => openBooking()}>
-            {t("הזמן עכשיו", "Book Now")}
-          </Button>
+          <div className="bg-white/90 backdrop-blur-sm px-12 py-10 rounded-lg shadow-2xl">
+            <h1 className="text-7xl md:text-8xl font-light mb-6 text-gray-900 tracking-wide">
+              SCARLET
+            </h1>
+            <div className="w-24 h-px bg-primary mx-auto mb-6"></div>
+            <p className="text-xl md:text-2xl mb-8 text-gray-700 font-light">
+              {t("חוויית אירוח בוטיקית בלב תל אביב", "Boutique Hospitality in the Heart of Tel Aviv")}
+            </p>
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white px-10 py-6 text-lg" onClick={() => openBooking()}>
+              {t("הזמן עכשיו", "Book Now")}
+            </Button>
+          </div>
           {/* Weather Widget */}
-          <div className="mt-16">
+          <div className="mt-8">
             <WeatherWidget />
           </div>
         </div>
