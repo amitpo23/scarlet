@@ -250,3 +250,12 @@
 - [x] Add Open Graph tags for social sharing (Facebook/LinkedIn)
 - [x] Add Twitter Card tags
 - [x] Add canonical URL and language tags (he/en)
+
+## JSON-LD Structured Data
+- [x] Add Hotel schema with basic information (name, description, URL)
+- [x] Include address and geo coordinates (Tel Aviv location)
+- [x] Add rating and review data (4.7/5 with 328 reviews)
+- [x] Include price range and amenities (WiFi, AC, Concierge, Breakfast, Parking, Safe)
+- [x] Add contact information (phone, email, reservations)
+- [x] Include image gallery URLs and social media links
+- [x] Add check-in/out times, room count, and policies
