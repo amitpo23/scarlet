@@ -165,3 +165,7 @@
 - [ ] Add loading states for images
 - [ ] Reduce overall page length
 - [ ] Add quick action buttons (Book, Call, WhatsApp)
+
+## Documentation Improvements
+- [x] Create CONTRIBUTING.md with contribution guidelines
+- [x] Add badges to README.md (build status, license, version)

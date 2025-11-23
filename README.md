@@ -1,5 +1,12 @@
 # Scarlet Hotel Tel Aviv - Official Website
 
+![License](https://img.shields.io/badge/license-Proprietary-red.svg)
+![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)
+![React](https://img.shields.io/badge/react-19.0.0-61dafb.svg)
+![TypeScript](https://img.shields.io/badge/typescript-5.x-blue.svg)
+![Tailwind](https://img.shields.io/badge/tailwind-4.x-38bdf8.svg)
+![pnpm](https://img.shields.io/badge/pnpm-8.x-orange.svg)
+
 A modern, fully-featured boutique hotel website built with React 19, TypeScript, and Tailwind CSS 4. Features bilingual support (Hebrew/English), interactive booking system, AI chatbot, and comprehensive hotel information.
 
 ![Scarlet Hotel](client/public/logo-clean.png)
