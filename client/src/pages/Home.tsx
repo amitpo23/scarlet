@@ -284,6 +284,33 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Location & Attractions Section - Moved here after About */}
+      <section id="location" ref={locationAnim.ref as any} className={`py-16 bg-white transition-all duration-700 ${locationAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className="container mx-auto px-6">
+          <h2 className="text-5xl font-light mb-4 text-center text-gray-900">
+            {t("מיקום ואטרקציות", "Location & Attractions")}
+          </h2>
+          <div className="w-16 h-px bg-primary mx-auto mb-4"></div>
+          <p className="text-center text-gray-600 mb-12 text-base font-light">
+            {t("גלה את המקומות המעניינים ביותר באזור", "Discover the most interesting places in the area")}
+          </p>
+          
+          {/* Hotel Address */}
+          <div className="mb-12 text-center">
+            <div className="inline-flex items-center gap-3 bg-gray-50 px-8 py-6 shadow-sm">
+              <MapPin className="w-6 h-6 text-primary" />
+              <div className={language === "he" ? "text-right" : "text-left"}>
+                <h3 className="font-light text-xl text-gray-900">{t("מלון Scarlet", "Scarlet Hotel")}</h3>
+                <p className="text-gray-600">17 J. L. Gordon Street, {t("תל אביב", "Tel Aviv")}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Interactive Attractions Map */}
+          <AttractionsMap />
+        </div>
+      </section>
+
       {/* Rooms Section */}
       <section id="rooms" ref={roomsAnim.ref as any} className={`py-16 bg-white transition-all duration-700 ${roomsAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="container mx-auto px-6">
@@ -373,32 +400,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Location Section */}
-      <section id="location" ref={locationAnim.ref as any} className={`py-16 bg-gray-50 transition-all duration-700 ${locationAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <div className="container mx-auto px-6">
-          <h2 className="text-5xl font-light mb-4 text-center text-gray-900">
-            {t("מיקום ואטרקציות", "Location & Attractions")}
-          </h2>
-          <div className="w-16 h-px bg-primary mx-auto mb-4"></div>
-          <p className="text-center text-gray-600 mb-12 text-base font-light">
-            {t("גלה את המקומות המעניינים ביותר באזור", "Discover the most interesting places in the area")}
-          </p>
-          
-          {/* Hotel Address */}
-          <div className="mb-12 text-center">
-            <div className="inline-flex items-center gap-3 bg-white px-8 py-6 shadow-sm">
-              <MapPin className="w-6 h-6 text-primary" />
-              <div className={language === "he" ? "text-right" : "text-left"}>
-                <h3 className="font-light text-xl text-gray-900">{t("מלון Scarlet", "Scarlet Hotel")}</h3>
-                <p className="text-gray-600">17 J. L. Gordon Street, {t("תל אביב", "Tel Aviv")}</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Interactive Attractions Map */}
-          <AttractionsMap />
-        </div>
-      </section>
 
       {/* Amenities Section */}
       <section id="amenities" ref={amenitiesAnim.ref as any} className={`py-16 bg-white transition-all duration-700 ${amenitiesAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>

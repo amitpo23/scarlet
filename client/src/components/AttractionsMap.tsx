@@ -130,32 +130,54 @@ export function AttractionsMap() {
   ];
 
   const handleMapReady = (map: google.maps.Map) => {
-    // Add hotel marker
-    new window.google.maps.Marker({
+    // Add hotel marker (red)
+    const hotelMarker = new window.google.maps.Marker({
       position: hotelLocation,
       map: map,
       title: "Scarlet Hotel",
       icon: {
-        url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
-        scaledSize: new window.google.maps.Size(40, 40),
+        path: window.google.maps.SymbolPath.CIRCLE,
+        scale: 12,
+        fillColor: "#8B1538",
+        fillOpacity: 1,
+        strokeColor: "#ffffff",
+        strokeWeight: 3,
       },
+      zIndex: 1000,
     });
 
-    // Add attraction markers
+    // Add info window for hotel
+    const hotelInfoWindow = new window.google.maps.InfoWindow({
+      content: `<div style="padding: 8px;"><strong>Scarlet Hotel</strong></div>`,
+    });
+    hotelMarker.addListener("click", () => {
+      hotelInfoWindow.open(map, hotelMarker);
+    });
+
+    // Add attraction markers (blue)
     attractions.forEach((attraction) => {
       const marker = new window.google.maps.Marker({
         position: { lat: attraction.lat, lng: attraction.lng },
         map: map,
         title: language === "he" ? attraction.name.he : attraction.name.en,
         icon: {
-          url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
-          scaledSize: new window.google.maps.Size(32, 32),
+          path: window.google.maps.SymbolPath.CIRCLE,
+          scale: 8,
+          fillColor: "#4285F4",
+          fillOpacity: 1,
+          strokeColor: "#ffffff",
+          strokeWeight: 2,
         },
+      });
+
+      const infoWindow = new window.google.maps.InfoWindow({
+        content: `<div style="padding: 8px;"><strong>${language === "he" ? attraction.name.he : attraction.name.en}</strong></div>`,
       });
 
       marker.addListener("click", () => {
         setSelectedAttraction(attraction);
         map.panTo({ lat: attraction.lat, lng: attraction.lng });
+        infoWindow.open(map, marker);
       });
     });
 

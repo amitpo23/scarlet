@@ -265,3 +265,8 @@
 - [x] Display sharp, inviting hotel photos at full quality
 - [x] Redesign text overlay to not obscure images (semi-transparent white card)
 - [x] Ensure carousel shows hotel at its best with subtle gradient
+
+## Map Fix and Section Reordering
+- [x] Debug and fix non-working map component (fixed marker API compatibility)
+- [x] Move "Location & Attractions" section immediately after "About" section
+- [x] Ensure map displays correctly with markers (hotel in red, attractions in blue)
