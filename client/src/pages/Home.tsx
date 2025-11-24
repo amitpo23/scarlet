@@ -63,7 +63,7 @@ export default function Home() {
   const rooms = [
     {
       name: t("חדר אקונומי זוגי", "Economy Double Room"),
-      image: "/images/004.webp",
+      image: "/room1.jpg",
       description: t(
         "חדר נעים ומעוצב בקפידה עם כל השירותים הדרושים לשהייה נוחה",
         "A pleasant and carefully designed room with all the amenities needed for a comfortable stay"
@@ -71,7 +71,7 @@ export default function Home() {
     },
     {
       name: t("חדר קלאסיק זוגי", "Classic Double Room"),
-      image: "/images/003.webp",
+      image: "/room2.webp",
       description: t(
         "חדר מרווח עם עיצוב ייחודי ואווירה חמימה",
         "A spacious room with unique design and warm atmosphere"
@@ -79,7 +79,7 @@ export default function Home() {
     },
     {
       name: t("חדר קלאסיק זוגי עם מרפסת", "Classic Double Room with Balcony"),
-      image: "/images/004.webp",
+      image: "/room3.jpg",
       description: t(
         "חדר קלאסי עם מרפסת פרטית ונוף לעיר",
         "A classic room with private balcony and city views"
@@ -87,7 +87,7 @@ export default function Home() {
     },
     {
       name: t("חדר דלוקס", "Deluxe Room"),
-      image: "/images/005.webp",
+      image: "/room4.jpg",
       description: t(
         "חדר יוקרתי עם עיצוב נועז ומרשים בגוונים אדומים",
         "A luxury room with bold and impressive design in red tones"
@@ -265,17 +265,10 @@ export default function Home() {
               </div>
             </div>
             <div className="relative h-[600px]">
-              <div className="absolute top-0 right-0 w-3/4 h-2/3 overflow-hidden">
+              <div className="w-full h-full overflow-hidden shadow-lg">
                 <img 
-                  src="/images/001.webp" 
-                  alt="Hotel entrance" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute bottom-0 left-0 w-3/4 h-2/3 overflow-hidden shadow-lg">
-                <img 
-                  src="/images/009.webp" 
-                  alt="Hotel interior" 
+                  src="/lobby.jpg" 
+                  alt="Hotel lobby" 
                   className="w-full h-full object-cover"
                 />
               </div>

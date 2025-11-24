@@ -284,3 +284,11 @@
 - [x] Update LanguageContext to set English as default language instead of Hebrew
 - [x] Verify English loads first when visiting the site
 - [x] Ensure language toggle still works properly
+
+## Replace Room Images with High-Quality Photos
+- [x] Search for high-quality boutique hotel room images (4 rooms)
+- [x] Search for high-quality hotel lobby/reception image for About section
+- [x] Download professional images without black borders
+- [x] Replace room images in Home.tsx
+- [x] Replace About section image in Home.tsx
+- [x] Test that new images display correctly
