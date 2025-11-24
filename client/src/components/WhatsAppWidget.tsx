@@ -8,7 +8,7 @@ export function WhatsAppWidget() {
   const { t, language } = useLanguage();
 
   // WhatsApp business number (replace with actual hotel number)
-  const whatsappNumber = "972524734940"; // Format: country code + number without + or spaces
+  const whatsappNumber = "972501234567"; // Format: country code + number without + or spaces
   
   const message = language === "he"
     ? "שלום! אני מעוניין/ת לקבל מידע נוסף על מלון Scarlet"

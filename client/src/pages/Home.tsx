@@ -12,7 +12,6 @@ import { PhotoGallery } from "@/components/PhotoGallery";
 import { GuestReviews } from "@/components/GuestReviews";
 import { FAQ } from "@/components/FAQ";
 import { WhatsAppWidget } from "@/components/WhatsAppWidget";
-import { CallButton } from "@/components/CallButton";
 import { FloatingBookButton } from "@/components/FloatingBookButton";
 import { InstagramFeed } from "@/components/InstagramFeed";
 import { AIChatbot } from "@/components/AIChatbot";
@@ -459,7 +458,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row gap-8 justify-center items-center mb-12">
             <div className="flex items-center gap-3 bg-gray-50 px-6 py-4">
               <Phone className="w-5 h-5 text-primary" />
-              <span className="text-gray-700">052-473-4940</span>
+              <span className="text-gray-700">+972-3-123-4567</span>
             </div>
             <div className="flex items-center gap-3 bg-gray-50 px-6 py-4">
               <Mail className="w-5 h-5 text-primary" />
@@ -503,7 +502,6 @@ export default function Home() {
       {/* Booking Modal */}
       <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
       <FloatingBookButton onClick={() => openBooking()} />
-      <CallButton />
       <WhatsAppWidget />
       <AIChatbot />
       <BackToTop />

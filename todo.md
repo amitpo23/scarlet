@@ -274,21 +274,8 @@
 ## Instagram Section Reordering
 - [x] Move Instagram section to bottom of page, just before Contact section
 
-## AI Chatbot with OpenAI
-- [x] Create hotel knowledge base file with all information
-- [x] Build AI chatbot component using OpenAI API
-- [x] Integrate chatbot into website (replaced existing chatbot)
-- [x] Request OpenAI API key securely from user
-- [x] Add conversation history and context
-## Vercel Analytics Integration
-- [x] Install @vercel/analytics package
-- [x] Add Analytics component to App.tsx
-
-## Update Phone Number
-- [x] Update phone number to 052-473-4940 in Contact section
-- [x] Update phone number in WhatsApp widget (972524734940)
-
-## Add Call Now Button
-- [x] Create floating Call Now button next to WhatsApp
-- [x] Open phone dialer with tel: link to 052-473-4940
-- [x] Style consistently with scarlet primary color
+## Google Maps API Integration
+- [x] Request Google Maps API key from user (AIzaSyBjh84_ZQtmZ5ayx3a7ZAO8GE254fe4qP8)
+- [x] Update Map component to use real API key instead of Manus proxy
+- [x] Changed from proxy URL to direct Google Maps API
+- [x] Removed marker library, using classic Marker API
