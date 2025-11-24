@@ -283,3 +283,7 @@
 ## Vercel Analytics Integration
 - [x] Install @vercel/analytics package
 - [x] Add Analytics component to App.tsx
+
+## Update Phone Number
+- [x] Update phone number to 052-473-4940 in Contact section
+- [x] Update phone number in WhatsApp widget (972524734940)
