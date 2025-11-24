@@ -287,3 +287,8 @@
 ## Update Phone Number
 - [x] Update phone number to 052-473-4940 in Contact section
 - [x] Update phone number in WhatsApp widget (972524734940)
+
+## Add Call Now Button
+- [x] Create floating Call Now button next to WhatsApp
+- [x] Open phone dialer with tel: link to 052-473-4940
+- [x] Style consistently with scarlet primary color
