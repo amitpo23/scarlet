@@ -294,12 +294,17 @@
 - [x] Test that new images display correctly
 
 ## Room Image Galleries
-- [ ] Search for bathroom images for each room type
-- [ ] Search for additional room detail/view images
-- [ ] Create RoomGallery modal component with image carousel
-- [ ] Add 3 images per room (bedroom, bathroom, view/details)
-- [ ] Make room images clickable to open gallery
-- [ ] Test gallery functionality
+- [x] Search for bathroom images for each room type
+- [x] Search for additional room detail/view images
+- [x] Create RoomGalleryModal component with image carousel
+- [x] Add 3 images per room (bedroom, bathroom, view/details)
+- [x] Make room images clickable to open gallery
+- [x] Test gallery functionality
+
+## Fix Google Maps for Production
+- [x] Update Google Maps API key configuration
+- [x] Ensure maps work on scarlet-hotel.com and *.vercel.app domains
+- [ ] User needs to add domains to Google Cloud Console
 
 ## Convert Reviews to Horizontal Ticker
 - [x] Change GuestReviews from grid layout to horizontal scrolling ticker

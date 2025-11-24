@@ -16,6 +16,7 @@ import { FloatingBookButton } from "@/components/FloatingBookButton";
 import { InstagramFeed } from "@/components/InstagramFeed";
 import { AIChatbot } from "@/components/AIChatbot";
 import { BackToTop } from "@/components/BackToTop";
+import { RoomGalleryModal } from "@/components/RoomGalleryModal";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -24,6 +25,9 @@ export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedRoom, setSelectedRoom] = useState<string>();
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [galleryImagesState, setGalleryImagesState] = useState<string[]>([]);
+  const [galleryRoomName, setGalleryRoomName] = useState("");
   const { language, setLanguage, t } = useLanguage();
 
   // Scroll animations for sections
@@ -64,6 +68,7 @@ export default function Home() {
     {
       name: t("חדר אקונומי זוגי", "Economy Double Room"),
       image: "/room1.jpg",
+      gallery: ["/room1.jpg", "/bathroom1.jpg", "/view1.jpg"],
       description: t(
         "חדר נעים ומעוצב בקפידה עם כל השירותים הדרושים לשהייה נוחה",
         "A pleasant and carefully designed room with all the amenities needed for a comfortable stay"
@@ -72,6 +77,7 @@ export default function Home() {
     {
       name: t("חדר קלאסיק זוגי", "Classic Double Room"),
       image: "/room2.webp",
+      gallery: ["/room2.webp", "/bathroom2.webp", "/view2.jpg"],
       description: t(
         "חדר מרווח עם עיצוב ייחודי ואווירה חמימה",
         "A spacious room with unique design and warm atmosphere"
@@ -80,6 +86,7 @@ export default function Home() {
     {
       name: t("חדר קלאסיק זוגי עם מרפסת", "Classic Double Room with Balcony"),
       image: "/room3.jpg",
+      gallery: ["/room3.jpg", "/bathroom3.jpg", "/view3.jpg"],
       description: t(
         "חדר קלאסי עם מרפסת פרטית ונוף לעיר",
         "A classic room with private balcony and city views"
@@ -88,12 +95,19 @@ export default function Home() {
     {
       name: t("חדר דלוקס", "Deluxe Room"),
       image: "/room4.jpg",
+      gallery: ["/room4.jpg", "/bathroom4.webp", "/view4.jpg"],
       description: t(
         "חדר יוקרתי עם עיצוב נועז ומרשים בגוונים אדומים",
         "A luxury room with bold and impressive design in red tones"
       ),
     },
   ];
+
+  const openGallery = (images: string[], roomName: string) => {
+    setGalleryImagesState(images);
+    setGalleryRoomName(roomName);
+    setGalleryOpen(true);
+  };
 
   const amenities = [
     { icon: Wifi, text: t("Wi-Fi חינם", "Free Wi-Fi") },
@@ -316,13 +330,21 @@ export default function Home() {
           </p>
           <div className="grid md:grid-cols-2 gap-12">
             {rooms.map((room, idx) => (
-              <div key={idx} className="group cursor-pointer">
-                <div className="relative h-96 overflow-hidden mb-6">
+              <div key={idx} className="group">
+                <div 
+                  className="relative h-96 overflow-hidden mb-6 cursor-pointer"
+                  onClick={() => openGallery(room.gallery, room.name)}
+                >
                   <img 
                     src={room.image} 
                     alt={room.name} 
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 px-4 py-2 rounded-lg">
+                      <p className="text-sm font-medium">{t("לחץ לצפייה בגלריה", "Click to view gallery")}</p>
+                    </div>
+                  </div>
                 </div>
                 <div>
                   <h3 className="text-2xl font-light mb-3 text-gray-900">{room.name}</h3>
@@ -494,6 +516,15 @@ export default function Home() {
 
       {/* Booking Modal */}
       <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
+      
+      {/* Room Gallery Modal */}
+      <RoomGalleryModal 
+        open={galleryOpen} 
+        onOpenChange={setGalleryOpen} 
+        images={galleryImagesState} 
+        roomName={galleryRoomName}
+      />
+      
       <FloatingBookButton onClick={() => openBooking()} />
       <WhatsAppWidget />
       <AIChatbot />
