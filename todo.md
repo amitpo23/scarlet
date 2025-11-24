@@ -279,3 +279,8 @@
 - [x] Update Map component to use real API key instead of Manus proxy
 - [x] Changed from proxy URL to direct Google Maps API
 - [x] Removed marker library, using classic Marker API
+
+## Change Default Language to English
+- [x] Update LanguageContext to set English as default language instead of Hebrew
+- [x] Verify English loads first when visiting the site
+- [x] Ensure language toggle still works properly
