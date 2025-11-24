@@ -1,8 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { X, Send, Bot, User } from 'lucide-react';
 import { Button } from './ui/button';
-import OpenAI from 'openai';
-import { hotelKnowledge, systemPrompt } from '@/data/hotelKnowledge';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -42,60 +40,42 @@ export function AIChatbot() {
     };
 
     setMessages((prev) => [...prev, userMessage]);
+    const userInput = input;
     setInput('');
     setIsLoading(true);
     setError(null);
 
     try {
-      // Check if API key exists
-      const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
-      if (!apiKey) {
-        throw new Error('OpenAI API key not configured');
-      }
-
-      const openai = new OpenAI({
-        apiKey,
-        dangerouslyAllowBrowser: true, // Note: In production, use a backend proxy
-      });
-
-      const response = await openai.chat.completions.create({
-        model: 'gpt-4o-mini',
-        messages: [
-          {
-            role: 'system',
-            content: systemPrompt + '\n\nKnowledge Base:\n' + hotelKnowledge,
-          },
-          ...messages.map((msg) => ({
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messages: messages.map((msg) => ({
             role: msg.role,
             content: msg.content,
           })),
-          {
-            role: 'user',
-            content: input,
-          },
-        ],
-        temperature: 0.7,
-        max_tokens: 500,
+          userMessage: userInput,
+        }),
       });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'שגיאה בתקשורת עם השרת');
+      }
 
       const assistantMessage: Message = {
         role: 'assistant',
-        content: response.choices[0]?.message?.content || 'מצטער, לא הצלחתי להבין. נסה שוב.',
+        content: data.message || 'מצטער, לא הצלחתי להבין. נסה שוב.',
         timestamp: new Date(),
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
     } catch (err: any) {
       console.error('Chatbot error:', err);
-      let errorMessage = 'מצטער, אירעה שגיאה. אנא נסה שוב מאוחר יותר.';
-      
-      if (err.message?.includes('API key')) {
-        errorMessage = '⚠️ מפתח API לא הוגדר. אנא פנה למנהל האתר.';
-      } else if (err.status === 429) {
-        errorMessage = 'יותר מדי בקשות. אנא המתן רגע ונסה שוב.';
-      } else if (err.status === 401) {
-        errorMessage = 'מפתח API לא תקין. אנא פנה למנהל האתר.';
-      }
+      const errorMessage = err.message || 'מצטער, אירעה שגיאה. אנא נסה שוב מאוחר יותר.';
 
       setError(errorMessage);
       setMessages((prev) => [
