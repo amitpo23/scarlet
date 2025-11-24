@@ -99,7 +99,7 @@ export function GuestReviews() {
         {[1, 2, 3, 4, 5].map((star) => (
           <Star
             key={star}
-            className={`w-5 h-5 ${
+            className={`w-4 h-4 ${
               star <= rating
                 ? "fill-yellow-400 text-yellow-400"
                 : "fill-gray-200 text-gray-200"
@@ -110,8 +110,11 @@ export function GuestReviews() {
     );
   };
 
+  // Duplicate reviews for seamless loop
+  const duplicatedReviews = [...reviews, ...reviews];
+
   return (
-    <div className="space-y-12">
+    <div className="space-y-8">
       {/* Overall Rating */}
       <div className="text-center">
         <div className="inline-flex flex-col items-center bg-primary text-primary-foreground px-12 py-8 rounded-2xl shadow-xl">
@@ -134,36 +137,38 @@ export function GuestReviews() {
         </div>
       </div>
 
-      {/* Reviews Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {reviews.map((review) => (
-          <Card key={review.id} className="hover:shadow-lg transition-shadow">
-            <CardContent className="p-6">
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex-1">
-                  <h3 className="font-bold text-lg mb-1">
-                    {language === "he" ? review.name.he : review.name.en}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {language === "he" ? review.country.he : review.country.en}
-                  </p>
+      {/* Horizontal Scrolling Reviews Ticker */}
+      <div className="relative overflow-hidden">
+        <div className="flex gap-6 animate-scroll-rtl">
+          {duplicatedReviews.map((review, index) => (
+            <Card key={`${review.id}-${index}`} className="flex-shrink-0 w-[350px] hover:shadow-lg transition-shadow">
+              <CardContent className="p-6">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex-1">
+                    <h3 className="font-bold text-lg mb-1">
+                      {language === "he" ? review.name.he : review.name.en}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {language === "he" ? review.country.he : review.country.en}
+                    </p>
+                  </div>
+                  <Quote className="w-8 h-8 text-primary/20" />
                 </div>
-                <Quote className="w-8 h-8 text-primary/20" />
-              </div>
 
-              <div className="mb-3">{renderStars(review.rating)}</div>
+                <div className="mb-3">{renderStars(review.rating)}</div>
 
-              <p className="text-sm text-muted-foreground mb-4 line-clamp-4">
-                {language === "he" ? review.comment.he : review.comment.en}
-              </p>
+                <p className="text-sm text-muted-foreground mb-4 line-clamp-4">
+                  {language === "he" ? review.comment.he : review.comment.en}
+                </p>
 
-              <div className="flex items-center justify-between text-xs text-muted-foreground pt-3 border-t">
-                <span className="font-semibold text-primary">{review.platform}</span>
-                <span>{review.date}</span>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+                <div className="flex items-center justify-between text-xs text-muted-foreground pt-3 border-t">
+                  <span className="font-semibold text-primary">{review.platform}</span>
+                  <span>{review.date}</span>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </div>
 
       {/* Trust Badges */}

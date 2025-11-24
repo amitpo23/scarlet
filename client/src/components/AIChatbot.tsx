@@ -153,9 +153,13 @@ export function AIChatbot() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-24 right-6 z-40 bg-primary text-primary-foreground rounded-full p-4 shadow-lg hover:scale-110 transition-transform duration-200"
+          className="fixed bottom-24 right-6 z-40 bg-primary text-primary-foreground rounded-full p-4 shadow-lg hover:scale-110 transition-transform duration-200 group relative"
           aria-label={t("פתח צ'אט", "Open chat")}
+          title={t("צ'אט עם עוזר AI", "AI Assistant Chat")}
         >
+          <span className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+            {t("צ'אט AI", "AI Chat")}
+          </span>
           <MessageCircle className="w-6 h-6" />
         </button>
       )}

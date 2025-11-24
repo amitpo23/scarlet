@@ -35,7 +35,8 @@ export function FloatingBookButton({ onClick }: FloatingBookButtonProps) {
       <Button
         onClick={onClick}
         size="lg"
-        className="bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 px-6 py-6 text-base font-normal"
+        className="bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 px-6 py-6 text-base font-normal relative group"
+        title={t("הזמן חדר", "Book Room")}
       >
         <Calendar className="w-5 h-5" />
         {t("הזמן עכשיו", "Book Now")}

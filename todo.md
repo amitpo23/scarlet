@@ -292,3 +292,22 @@
 - [x] Replace room images in Home.tsx
 - [x] Replace About section image in Home.tsx
 - [x] Test that new images display correctly
+
+## Room Image Galleries
+- [ ] Search for bathroom images for each room type
+- [ ] Search for additional room detail/view images
+- [ ] Create RoomGallery modal component with image carousel
+- [ ] Add 3 images per room (bedroom, bathroom, view/details)
+- [ ] Make room images clickable to open gallery
+- [ ] Test gallery functionality
+
+## Convert Reviews to Horizontal Ticker
+- [x] Change GuestReviews from grid layout to horizontal scrolling ticker
+- [x] Add CSS animation for continuous right-to-left scroll
+- [x] Make reviews runner auto-scroll smoothly
+- [x] Reduce vertical space taken by reviews section
+
+## Add Tooltips to Floating Buttons
+- [x] Add tooltip to WhatsApp button (shows "WhatsApp" on hover)
+- [x] Add tooltip to AI Chat button (shows "AI Chat" on hover)
+- [x] Add tooltip to Book Now button (shows "Book Room" on hover)

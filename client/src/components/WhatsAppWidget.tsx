@@ -70,8 +70,12 @@ export function WhatsAppWidget() {
         <Button
           onClick={() => setIsOpen(!isOpen)}
           size="lg"
-          className="h-16 w-16 rounded-full bg-green-500 hover:bg-green-600 shadow-2xl hover:shadow-green-500/50 transition-all"
+          className="h-16 w-16 rounded-full bg-green-500 hover:bg-green-600 shadow-2xl hover:shadow-green-500/50 transition-all relative group"
+          title={t("WhatsApp", "WhatsApp")}
         >
+          <span className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+            {t("WhatsApp", "WhatsApp")}
+          </span>
           {isOpen ? (
             <X className="w-7 h-7 text-white" />
           ) : (
