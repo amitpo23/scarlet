@@ -316,3 +316,14 @@
 - [x] Add tooltip to WhatsApp button (shows "WhatsApp" on hover)
 - [x] Add tooltip to AI Chat button (shows "AI Chat" on hover)
 - [x] Add tooltip to Book Now button (shows "Book Room" on hover)
+
+## Fix AI Chatbot Display Issues
+- [ ] Restore Bot icon in chat header
+- [ ] Restore "Online" status text in chat header
+- [ ] Test chatbot UI display
+
+## Fix Google Maps Loading Error
+- [x] Debug Maps API loading issue
+- [x] Fix JavaScript error preventing map display
+- [x] Added API key directly to code
+- [x] Test maps functionality
