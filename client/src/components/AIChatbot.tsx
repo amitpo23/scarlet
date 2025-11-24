@@ -1,233 +1,246 @@
-import { useState, useRef, useEffect } from "react";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { MessageCircle, X, Send, Bot } from "lucide-react";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
+import { useState, useRef, useEffect } from 'react';
+import { X, Send, Bot, User } from 'lucide-react';
+import { Button } from './ui/button';
+import OpenAI from 'openai';
+import { hotelKnowledge, systemPrompt } from '@/data/hotelKnowledge';
 
 interface Message {
-  id: number;
-  text: string;
-  sender: "user" | "bot";
+  role: 'user' | 'assistant';
+  content: string;
   timestamp: Date;
 }
 
 export function AIChatbot() {
-  const { t, language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [inputValue, setInputValue] = useState("");
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      role: 'assistant',
+      content: 'שלום! 👋 אני העוזר הדיגיטלי של מלון Scarlet. איך אוכל לעזור לך היום?',
+      timestamp: new Date(),
+    },
+  ]);
+  const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
 
-  useEffect(() => {
-    if (isOpen && messages.length === 0) {
-      // Welcome message
-      setMessages([
-        {
-          id: Date.now(),
-          text: t(
-            "שלום! אני העוזר הדיגיטלי של מלון Scarlet. איך אוכל לעזור לך היום?",
-            "Hello! I'm the Scarlet Hotel digital assistant. How can I help you today?"
-          ),
-          sender: "bot",
-          timestamp: new Date(),
-        },
-      ]);
-    }
-  }, [isOpen, t]);
-
-  const getFAQResponse = (userMessage: string): string => {
-    const msg = userMessage.toLowerCase();
-    
-    // Hebrew responses
-    if (language === "he") {
-      if (msg.includes("שעות") || msg.includes("צ'ק אין") || msg.includes("check in")) {
-        return "שעות הצ'ק-אין: 15:00, שעות הצ'ק-אאוט: 11:00. ניתן לבקש צ'ק-אין מוקדם או צ'ק-אאוט מאוחר בכפוף לזמינות.";
-      }
-      if (msg.includes("חניה") || msg.includes("parking")) {
-        return "יש לנו חניה פרטית תת-קרקעית במחיר של 50 ₪ ללילה. מומלץ להזמין מראש.";
-      }
-      if (msg.includes("ארוחת בוקר") || msg.includes("breakfast")) {
-        return "ארוחת בוקר בופה עשירה מוגשת בין 07:00-11:00. המחיר: 65 ₪ לאדם.";
-      }
-      if (msg.includes("wifi") || msg.includes("אינטרנט")) {
-        return "WiFi מהיר וחינמי זמין בכל רחבי המלון, כולל בחדרים.";
-      }
-      if (msg.includes("חיות מחמד") || msg.includes("כלב") || msg.includes("חתול") || msg.includes("pet")) {
-        return "אנו מקבלים חיות מחמד קטנות (עד 8 ק\"ג) בתוספת תשלום של 100 ₪ ללילה.";
-      }
-      if (msg.includes("ביטול") || msg.includes("cancel")) {
-        return "ניתן לבטל הזמנה ללא עלות עד 48 שעות לפני מועד ההגעה. ביטול מאוחר יותר יחויב בעלות של לילה אחד.";
-      }
-      if (msg.includes("חוף") || msg.includes("ים") || msg.includes("beach")) {
-        return "המלון נמצא במרחק הליכה של 10 דקות מחוף הים של תל אביב.";
-      }
-      if (msg.includes("שדה תעופה") || msg.includes("airport")) {
-        return "המרחק משדה התעופה בן גוריון הוא כ-20 ק\"מ (30-40 דקות נסיעה). אנו מציעים שירות הסעות במחיר של 150 ₪.";
-      }
-      if (msg.includes("מחיר") || msg.includes("price") || msg.includes("כמה עולה")) {
-        return "המחירים משתנים בהתאם לעונה ולסוג החדר. חדר סטנדרט מתחיל מ-450 ₪ ללילה. לחץ על 'הזמן עכשיו' לבדיקת מחירים מדויקים.";
-      }
-      if (msg.includes("שירותים") || msg.includes("מתקנים") || msg.includes("amenities")) {
-        return "המלון כולל: WiFi חינמי, מיזוג אוויר, טלוויזיה, מקלחת, מייבש שיער, כספת, מיני בר, שירות חדרים 24/7, ושירות קונסיירז'.";
-      }
-      return "מצטער, אני לא בטוח שהבנתי. תוכל לנסח את השאלה אחרת? או לחץ על כפתור WhatsApp לשיחה עם נציג אנושי.";
-    }
-    
-    // English responses
-    if (msg.includes("hours") || msg.includes("check in") || msg.includes("check out")) {
-      return "Check-in: 3:00 PM, Check-out: 11:00 AM. Early check-in or late check-out available upon request.";
-    }
-    if (msg.includes("parking")) {
-      return "We have underground private parking for 50 ₪ per night. Advance booking recommended.";
-    }
-    if (msg.includes("breakfast")) {
-      return "Rich buffet breakfast served 7:00 AM - 11:00 AM. Price: 65 ₪ per person.";
-    }
-    if (msg.includes("wifi") || msg.includes("internet")) {
-      return "Free high-speed WiFi available throughout the hotel, including in rooms.";
-    }
-    if (msg.includes("pet") || msg.includes("dog") || msg.includes("cat")) {
-      return "We accept small pets (up to 8 kg) for an additional fee of 100 ₪ per night.";
-    }
-    if (msg.includes("cancel")) {
-      return "Free cancellation up to 48 hours before arrival. Later cancellations charged for one night.";
-    }
-    if (msg.includes("beach") || msg.includes("sea")) {
-      return "The hotel is a 10-minute walk from Tel Aviv beach.";
-    }
-    if (msg.includes("airport")) {
-      return "Ben Gurion Airport is 20 km away (30-40 min drive). We offer shuttle service for 150 ₪.";
-    }
-    if (msg.includes("price") || msg.includes("cost") || msg.includes("how much")) {
-      return "Prices vary by season and room type. Standard rooms start from 450 ₪ per night. Click 'Book Now' for exact pricing.";
-    }
-    if (msg.includes("amenities") || msg.includes("facilities")) {
-      return "Hotel amenities: Free WiFi, A/C, TV, shower, hairdryer, safe, minibar, 24/7 room service, and concierge.";
-    }
-    
-    return "I'm sorry, I didn't quite understand. Could you rephrase? Or click the WhatsApp button to chat with a human representative.";
-  };
-
-  const handleSend = () => {
-    if (!inputValue.trim()) return;
+  const sendMessage = async () => {
+    if (!input.trim() || isLoading) return;
 
     const userMessage: Message = {
-      id: Date.now(),
-      text: inputValue,
-      sender: "user",
+      role: 'user',
+      content: input,
       timestamp: new Date(),
     };
 
     setMessages((prev) => [...prev, userMessage]);
-    setInputValue("");
+    setInput('');
+    setIsLoading(true);
+    setError(null);
 
-    // Simulate bot typing delay
-    setTimeout(() => {
-      const botResponse: Message = {
-        id: Date.now() + 1,
-        text: getFAQResponse(inputValue),
-        sender: "bot",
+    try {
+      // Check if API key exists
+      const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+      if (!apiKey) {
+        throw new Error('OpenAI API key not configured');
+      }
+
+      const openai = new OpenAI({
+        apiKey,
+        dangerouslyAllowBrowser: true, // Note: In production, use a backend proxy
+      });
+
+      const response = await openai.chat.completions.create({
+        model: 'gpt-4o-mini',
+        messages: [
+          {
+            role: 'system',
+            content: systemPrompt + '\n\nKnowledge Base:\n' + hotelKnowledge,
+          },
+          ...messages.map((msg) => ({
+            role: msg.role,
+            content: msg.content,
+          })),
+          {
+            role: 'user',
+            content: input,
+          },
+        ],
+        temperature: 0.7,
+        max_tokens: 500,
+      });
+
+      const assistantMessage: Message = {
+        role: 'assistant',
+        content: response.choices[0]?.message?.content || 'מצטער, לא הצלחתי להבין. נסה שוב.',
         timestamp: new Date(),
       };
-      setMessages((prev) => [...prev, botResponse]);
-    }, 800);
-  };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") {
-      handleSend();
+      setMessages((prev) => [...prev, assistantMessage]);
+    } catch (err: any) {
+      console.error('Chatbot error:', err);
+      let errorMessage = 'מצטער, אירעה שגיאה. אנא נסה שוב מאוחר יותר.';
+      
+      if (err.message?.includes('API key')) {
+        errorMessage = '⚠️ מפתח API לא הוגדר. אנא פנה למנהל האתר.';
+      } else if (err.status === 429) {
+        errorMessage = 'יותר מדי בקשות. אנא המתן רגע ונסה שוב.';
+      } else if (err.status === 401) {
+        errorMessage = 'מפתח API לא תקין. אנא פנה למנהל האתר.';
+      }
+
+      setError(errorMessage);
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: 'assistant',
+          content: errorMessage,
+          timestamp: new Date(),
+        },
+      ]);
+    } finally {
+      setIsLoading(false);
     }
   };
 
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  };
+
+  if (!isOpen) {
+    return (
+      <button
+        onClick={() => setIsOpen(true)}
+        className="fixed bottom-24 right-6 z-40 bg-primary text-white p-4 rounded-full shadow-lg hover:bg-primary/90 transition-all hover:scale-110"
+        aria-label="פתח צ'אט AI"
+      >
+        <Bot className="w-6 h-6" />
+      </button>
+    );
+  }
+
   return (
-    <>
-      {/* Floating Chat Button */}
-      {!isOpen && (
-        <button
-          onClick={() => setIsOpen(true)}
-          className="fixed bottom-24 right-6 z-40 bg-primary text-primary-foreground rounded-full p-4 shadow-lg hover:scale-110 transition-transform duration-200"
-          aria-label={t("פתח צ'אט", "Open chat")}
-        >
-          <MessageCircle className="w-6 h-6" />
-        </button>
-      )}
-
-      {/* Chat Window */}
-      {isOpen && (
-        <div className="fixed bottom-6 right-6 z-50 w-96 max-w-[calc(100vw-3rem)] bg-background border border-border rounded-lg shadow-2xl flex flex-col h-[32rem]">
-          {/* Chat Header */}
-          <div className="bg-primary text-primary-foreground p-4 rounded-t-lg flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <Bot className="w-6 h-6" />
-              <div>
-                <h3 className="font-semibold">Scarlet AI Assistant</h3>
-                <p className="text-xs opacity-90">{t("מקוון", "Online")}</p>
-              </div>
-            </div>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="hover:bg-primary-foreground/20 rounded p-1 transition-colors"
-              aria-label={t("סגור צ'אט", "Close chat")}
-            >
-              <X className="w-5 h-5" />
-            </button>
-          </div>
-
-          {/* Messages Area */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-secondary/10">
-            {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
-              >
-                <div
-                  className={`max-w-[80%] rounded-lg p-3 ${
-                    message.sender === "user"
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-background border border-border"
-                  }`}
-                >
-                  <p className="text-sm">{message.text}</p>
-                  <p className="text-xs opacity-60 mt-1">
-                    {message.timestamp.toLocaleTimeString(language === "he" ? "he-IL" : "en-US", {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
-                  </p>
-                </div>
-              </div>
-            ))}
-            <div ref={messagesEndRef} />
-          </div>
-
-          {/* Input Area */}
-          <div className="p-4 border-t border-border bg-background rounded-b-lg">
-            <div className="flex gap-2">
-              <Input
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder={t("הקלד הודעה...", "Type a message...")}
-                className="flex-1"
-              />
-              <Button onClick={handleSend} size="icon">
-                <Send className="w-4 h-4" />
-              </Button>
-            </div>
-            <p className="text-xs text-muted-foreground mt-2 text-center">
-              {t("מופעל על ידי AI • זמין 24/7", "Powered by AI • Available 24/7")}
-            </p>
+    <div className="fixed bottom-6 right-6 z-50 w-96 h-[600px] bg-white rounded-lg shadow-2xl flex flex-col border border-gray-200">
+      {/* Header */}
+      <div className="bg-primary text-white p-4 rounded-t-lg flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <Bot className="w-6 h-6" />
+          <div>
+            <h3 className="font-semibold">עוזר Scarlet</h3>
+            <p className="text-xs opacity-90">מופעל ב-AI</p>
           </div>
         </div>
-      )}
-    </>
+        <button
+          onClick={() => setIsOpen(false)}
+          className="hover:bg-white/20 p-1 rounded transition-colors"
+          aria-label="סגור צ'אט"
+        >
+          <X className="w-5 h-5" />
+        </button>
+      </div>
+
+      {/* Messages */}
+      <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+        {messages.map((message, index) => (
+          <div
+            key={index}
+            className={`flex gap-3 ${
+              message.role === 'user' ? 'flex-row-reverse' : 'flex-row'
+            }`}
+          >
+            <div
+              className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
+                message.role === 'user'
+                  ? 'bg-primary text-white'
+                  : 'bg-gray-200 text-gray-700'
+              }`}
+            >
+              {message.role === 'user' ? (
+                <User className="w-4 h-4" />
+              ) : (
+                <Bot className="w-4 h-4" />
+              )}
+            </div>
+            <div
+              className={`flex-1 ${
+                message.role === 'user' ? 'text-right' : 'text-left'
+              }`}
+            >
+              <div
+                className={`inline-block px-4 py-2 rounded-lg ${
+                  message.role === 'user'
+                    ? 'bg-primary text-white'
+                    : 'bg-white text-gray-800 border border-gray-200'
+                }`}
+              >
+                <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+              </div>
+              <p className="text-xs text-gray-500 mt-1">
+                {message.timestamp.toLocaleTimeString('he-IL', {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                })}
+              </p>
+            </div>
+          </div>
+        ))}
+        {isLoading && (
+          <div className="flex gap-3">
+            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-200 text-gray-700 flex items-center justify-center">
+              <Bot className="w-4 h-4" />
+            </div>
+            <div className="bg-white border border-gray-200 px-4 py-2 rounded-lg">
+              <div className="flex gap-1">
+                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+              </div>
+            </div>
+          </div>
+        )}
+        <div ref={messagesEndRef} />
+      </div>
+
+      {/* Input */}
+      <div className="p-4 border-t border-gray-200 bg-white rounded-b-lg">
+        {error && (
+          <div className="mb-2 text-xs text-red-600 bg-red-50 p-2 rounded">
+            {error}
+          </div>
+        )}
+        <div className="flex gap-2">
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyPress={handleKeyPress}
+            placeholder="הקלד הודעה..."
+            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-right"
+            disabled={isLoading}
+          />
+          <Button
+            onClick={sendMessage}
+            disabled={!input.trim() || isLoading}
+            className="px-4"
+          >
+            <Send className="w-4 h-4" />
+          </Button>
+        </div>
+        <p className="text-xs text-gray-500 mt-2 text-center">
+          מופעל ב-OpenAI GPT-4
+        </p>
+      </div>
+    </div>
   );
 }

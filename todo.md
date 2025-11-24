@@ -273,3 +273,10 @@
 
 ## Instagram Section Reordering
 - [x] Move Instagram section to bottom of page, just before Contact section
+
+## AI Chatbot with OpenAI
+- [x] Create hotel knowledge base file with all information
+- [x] Build AI chatbot component using OpenAI API
+- [x] Integrate chatbot into website (replaced existing chatbot)
+- [x] Request OpenAI API key securely from user
+- [x] Add conversation history and context
