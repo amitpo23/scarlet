@@ -1,11 +1,5 @@
-import express from "express";
-import { createServer } from "http";
-import path from "path";
-import { fileURLToPath } from "url";
+import type { VercelRequest, VercelResponse } from "@vercel/node";
 import OpenAI from "openai";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // Hotel knowledge base for the AI chatbot
 const hotelKnowledge = `
@@ -182,96 +176,71 @@ const systemPrompt = `אתה עוזר AI חכם ומקצועי של מלון Sca
 
 זכור: אתה מייצג את המלון, אז תמיד היה חיובי ומועיל!`;
 
-async function startServer() {
-  const app = express();
-  const server = createServer(app);
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  // Only allow POST requests
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
 
-  // Enable JSON parsing for API requests
-  app.use(express.json());
-
-  // Chat API endpoint
-  app.post("/api/chat", async (req, res) => {
-    try {
-      const apiKey = process.env.OPENAI_API_KEY;
-      if (!apiKey) {
-        return res.status(500).json({
-          error: "API key not configured",
-          message: "מפתח API לא הוגדר. אנא פנה למנהל האתר.",
-        });
-      }
-
-      const { messages, userMessage } = req.body;
-
-      if (!userMessage) {
-        return res.status(400).json({
-          error: "Missing message",
-          message: "חסרה הודעה",
-        });
-      }
-
-      const openai = new OpenAI({ apiKey });
-
-      const response = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
-        messages: [
-          {
-            role: "system",
-            content: systemPrompt + "\n\nKnowledge Base:\n" + hotelKnowledge,
-          },
-          ...(messages || []).map((msg: { role: string; content: string }) => ({
-            role: msg.role,
-            content: msg.content,
-          })),
-          {
-            role: "user",
-            content: userMessage,
-          },
-        ],
-        temperature: 0.7,
-        max_tokens: 500,
-      });
-
-      const assistantMessage =
-        response.choices[0]?.message?.content ||
-        "מצטער, לא הצלחתי להבין. נסה שוב.";
-
-      res.json({ message: assistantMessage });
-    } catch (err: any) {
-      console.error("Chat API error:", err);
-
-      let errorMessage = "מצטער, אירעה שגיאה. אנא נסה שוב מאוחר יותר.";
-
-      if (err.status === 429) {
-        errorMessage = "יותר מדי בקשות. אנא המתן רגע ונסה שוב.";
-      } else if (err.status === 401) {
-        errorMessage = "מפתח API לא תקין. אנא פנה למנהל האתר.";
-      }
-
-      res.status(err.status || 500).json({
-        error: err.message,
-        message: errorMessage,
+  try {
+    const apiKey = process.env.OPENAI_API_KEY;
+    if (!apiKey) {
+      return res.status(500).json({
+        error: "API key not configured",
+        message: "מפתח API לא הוגדר. אנא פנה למנהל האתר.",
       });
     }
-  });
 
-  // Serve static files from dist/public in production
-  const staticPath =
-    process.env.NODE_ENV === "production"
-      ? path.resolve(__dirname, "public")
-      : path.resolve(__dirname, "..", "dist", "public");
+    const { messages, userMessage } = req.body;
 
-  app.use(express.static(staticPath));
+    if (!userMessage) {
+      return res.status(400).json({
+        error: "Missing message",
+        message: "חסרה הודעה",
+      });
+    }
 
-  // Handle client-side routing - serve index.html for all routes
-  app.get("*", (_req, res) => {
-    res.sendFile(path.join(staticPath, "index.html"));
-  });
+    const openai = new OpenAI({ apiKey });
 
-  const port = process.env.PORT || 3000;
+    const response = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [
+        {
+          role: "system",
+          content: systemPrompt + "\n\nKnowledge Base:\n" + hotelKnowledge,
+        },
+        ...(messages || []).map((msg: { role: string; content: string }) => ({
+          role: msg.role as "user" | "assistant",
+          content: msg.content,
+        })),
+        {
+          role: "user",
+          content: userMessage,
+        },
+      ],
+      temperature: 0.7,
+      max_tokens: 500,
+    });
 
-  server.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}/`);
-  });
+    const assistantMessage =
+      response.choices[0]?.message?.content ||
+      "מצטער, לא הצלחתי להבין. נסה שוב.";
+
+    return res.status(200).json({ message: assistantMessage });
+  } catch (err: any) {
+    console.error("Chat API error:", err);
+
+    let errorMessage = "מצטער, אירעה שגיאה. אנא נסה שוב מאוחר יותר.";
+
+    if (err.status === 429) {
+      errorMessage = "יותר מדי בקשות. אנא המתן רגע ונסה שוב.";
+    } else if (err.status === 401) {
+      errorMessage = "מפתח API לא תקין. אנא פנה למנהל האתר.";
+    }
+
+    return res.status(err.status || 500).json({
+      error: err.message,
+      message: errorMessage,
+    });
+  }
 }
-
-startServer().catch(console.error);
