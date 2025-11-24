@@ -328,3 +328,10 @@
 - [x] Fix JavaScript error preventing map display
 - [x] Added API key directly to code
 - [x] Test maps functionality
+
+## Update Phone Number
+- [x] Change phone number from +972-3-123-4567 to 052-473-4940
+- [x] Update in Contact section
+- [x] Update in call button (already using 052-473-4940)
+- [x] Update in WhatsApp widget (already using 052-473-4940)
+- [x] Verify all instances updated
