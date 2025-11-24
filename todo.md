@@ -318,9 +318,10 @@
 - [x] Add tooltip to Book Now button (shows "Book Room" on hover)
 
 ## Fix AI Chatbot Display Issues
-- [ ] Restore Bot icon in chat header
-- [ ] Restore "Online" status text in chat header
-- [ ] Test chatbot UI display
+- [x] Restore Bot icon in chat header
+- [x] Restore "Online" status text in chat header
+- [x] Add "Chat Online" text to floating chatbot button
+- [x] Test chatbot UI display
 
 ## Fix Google Maps Loading Error
 - [x] Debug Maps API loading issue
